@@ -1,0 +1,19 @@
+.ads-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    margin: 25px auto;
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        width: 100%; 
+        img {
+            width: 100%;
+            min-height: 100%;
+        }
+    }
+}

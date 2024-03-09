@@ -1,0 +1,161 @@
+.header {
+    background: #FFF;
+    padding-bottom: 8px;
+    box-shadow: 1px 1px 7px #00000017,
+        1px 1px 13px #0000000f,
+        1px 1px 17px #0000000f;
+
+    .top-section {
+        background-color: #000;
+
+        .top-inner-container {
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: hsl(0, 0%, 100%);
+            height: 36px;
+
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+            }
+
+            .left {
+                p {
+                    margin: 0px;
+                }
+            }
+
+            .right {
+                display: flex;
+                gap: 10px;
+
+                .language-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    button {
+                        background: red;
+                        color: #FFF;
+                        padding: 3px 7px;
+                        border-radius: 4px;
+                        font-weight: 600;
+                    }
+                }
+
+                .search-container {
+                    padding: 0px;
+                    height: 30px;
+                    width: 35px;
+                    background: #FFF;
+                    border-radius: 4px;
+                    color: #000;
+
+                    button {
+                        width: 100%;
+                        display: flex;
+                        text-align: center;
+                        justify-content: center;
+
+                        svg {
+                            height: 25px;
+                            width: 25px;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 288px !important;
+            height: 90px !important;
+        }
+    }
+
+    .navigation-container {
+        ul {
+            margin: 0px;
+            padding: none;
+            display: flex;
+            gap: 20px;
+
+            li {
+                margin: 0px;
+                padding: 0px;
+                list-style: none;
+                display: flex;
+                position: relative;
+
+                a {
+                    text-decoration: none;
+                    color: #222222;
+                    font-size: 22px;
+                    font-weight: 600;
+                    padding: 5px 15px;
+
+                    &:hover {
+                        background: #eae5e5;
+                        color: blue
+                    }
+                }
+
+                button {
+                    background: transparent;
+
+                    svg {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+
+                &:hover {
+                    ul {
+                        display: flex;
+                    }
+                }
+
+                ul {
+                    position: absolute;
+                    left: 0px;
+                    top: 40px;
+                    height: auto;
+                    background-color: #FFF;
+                    display: none;
+                    flex-direction: column;
+                    justify-content: start !important;
+                    align-items: start !important;
+                    gap: 0px;
+                    padding: 5px 0px;
+                    width: 100%;
+
+                    li {
+                        background: #FFF;
+                        width: 100%;
+
+                        a {
+                            display: inline-block;
+                            padding: 5px 15px;
+                            width: 100%;
+                            text-align: center;
+                            &:hover {
+                                background: #eae5e5;
+                                color: blue
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
