@@ -1,6 +1,7 @@
 {
   "name": "dainikpatrapatrika.com",
   "version": "0.1.0",
+  "npm": "v21.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
