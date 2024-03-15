@@ -15,7 +15,13 @@ const nextConfig = {
                 hostname: 'www.campuslive24.com',
                 port: "",
                 pathname: "/**"
-            }],
+            } , {
+                protocol: "https",
+                hostname: 'img.youtube.com',
+                port: "",
+                pathname: "/**"
+            }
+        ],
     },
 };
 
