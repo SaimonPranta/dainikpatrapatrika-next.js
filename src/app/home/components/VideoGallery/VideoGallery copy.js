@@ -25,6 +25,7 @@ const videoArray = [
     },
 ]
 
+
 const VideoGallery = () => {
     return (
         <div className='video-gallery-section'>

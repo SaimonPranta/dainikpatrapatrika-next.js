@@ -53,19 +53,34 @@ const Sports = () => {
                         [...newsArray].slice(0, 7).map((news, index) => {
                             return <Link className='news-cart' href={"/"} key={index}>
                                 <Image src={news.img} height={100} width={100} alt='' />
-                               <div>
-                               <h2> {news.title}</h2>
-                                <p>{news.description.slice(0, 64)}</p>
-                               </div>
+                                <div>
+                                    <h2> {news.title}</h2>
+                                    <p>{news.description.slice(0, 64)}</p>
+                                </div>
                             </Link>
                         })
                     }
                 </div>
-                
+
             </div>
             <div className="debate-section">
-
+                <div className='title'>
+                    <h4>মত-দ্বিমত </h4>
                 </div>
+                <div className='news-container'>
+                    {
+                        [...newsArray].slice(0, 5).map((news, index) => {
+                            return <Link className='news-cart' href={"/"} key={index}>
+                                <div>
+                                    <h2> {news.title}</h2>
+                                    <p>{news.description.slice(0, 64)}</p>
+                                </div>
+                                <Image src={news.img} height={100} width={100} alt='' />
+                            </Link>
+                        })
+                    }
+                </div>
+            </div>
         </section>
     );
 };
