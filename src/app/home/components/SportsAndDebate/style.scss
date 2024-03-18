@@ -1,8 +1,8 @@
 .sport-debate-container {
     display: grid;
     margin: 40px auto;
-    grid-template-columns: 60% 40%;
-    gap: 20px;
+    grid-template-columns: 60% auto;
+    gap: 30px;
 
     .title {
         h4 {
@@ -40,7 +40,18 @@
                     width: calc(100% - 25px);
                     height: 400px;
                     position: relative;
-                    color: #FFFFFF;
+
+                    h2 {
+                        font-size: 27px;
+                        height: 100%;
+                        color: #FFFFFF !important;
+
+                    }
+
+                    p {
+                        color: #FFFFFF !important;
+
+                    }
 
                     img {
                         width: 100%;
@@ -115,12 +126,12 @@
         }
     }
 
-    .debate-section { 
+    .debate-section {
         .news-container {
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
 
-            .news-cart { 
+            .news-cart {
                 display: flex;
                 justify-content: space-between;
                 align-items: space-between;
@@ -132,7 +143,8 @@
                 h2 {
                     font-weight: 500;
                 }
-                img{
+
+                img {
                     width: 300px !important;
                     min-width: 300px !important;
                     height: 100%;
