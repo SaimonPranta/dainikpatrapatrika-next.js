@@ -10,7 +10,7 @@ const Index = ({ close, setCategories, select, setSelect }) => {
     useEffect(() => {
         setInput({})
     }, [select])
- 
+
     const handleInputChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -22,33 +22,44 @@ const Index = ({ close, setCategories, select, setSelect }) => {
             }
         })
     }
- 
+
     const handleSubmit = (e) => {
-        e.preventDefault()
-        if (!input.label || !input.path) {
+        e.preventDefault();
+        if (!input.label || !input.route) {
             if (select.categoriesID) {
-                return
-            }  
+                return;
+            }
         }
- console.log("input ==>>", input)
         fetch(`${BACKEND_URL}/admin/categories`, {
-            method: "POST",
-            body: input,
+            method: 'POST',
             headers: {
-                // authorization: `Bearer ${getCookie()}`,
+                'Content-Type': 'application/json',
             },
+            body: JSON.stringify({ ...input, ...select }),
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.data) {
-                    setCategories((state) => {
-                        return [...state, data.data]
-                    })
-                    close()
+                    if (select.categoriesID) {
+                        setCategories((state) => {
+                            const updateState = state.map((item) => {
+                                if (select.categoriesID === item._id) {
+                                    return data.data
+                                }
+                                return item
+                            })
+                            return [...updateState]
+                        })
+                    } else {
+                        setCategories((state) => {
+                            return [...state, data.data];
+                        });
+                    }
+
+                    close();
                 }
             });
-
-    }
+    };
 
     return (
         <div className='add-categories-modal' id='add-categories-modal'>
@@ -67,17 +78,7 @@ const Index = ({ close, setCategories, select, setSelect }) => {
                     <div>
                         <label>Categories  Path</label>
                         <input type='text' name="route" value={input.route ? input.route : ""} onChange={handleInputChange} />
-                    </div>
-                    {/* {!select.categoriesID && <div>
-                        <label>Category Logo</label>
-                        <div>
-                            <input type='file' onChange={handleImgChange} />
-                            {
-                                input?.img && <img src={URL.createObjectURL(input.img)} />
-                            }
-
-                        </div>
-                    </div>} */}
+                    </div> 
                     <div className='button-container'>
                         <button type='submit'>Submit</button>
                     </div>

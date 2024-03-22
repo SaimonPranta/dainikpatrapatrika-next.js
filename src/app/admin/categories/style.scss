@@ -68,8 +68,7 @@
             padding: 15px;
 
             li {
-                width: 100%;
-
+                width: 100%; 
                 button {
                     width: 100%;
                     border: none;
@@ -149,9 +148,16 @@
                         background-color: #FFF;
                         padding: 5px 5px 5px 25px;
                         border-radius: 4px;
+                        position: relative;
+                        box-sizing: border-box;
+                        width: 100%;
 
                         span {
-                            float: right;
+                            // float: right;
+
+                            position:absolute;
+                            right: 20px;
+                            top: 0px;
                             background-color: blue;
                             color: #FFFFFF;
                             height: 25px;

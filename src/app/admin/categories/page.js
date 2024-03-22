@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { IoDuplicate } from "react-icons/io5"
 import AddCategories from "./Modal/AddCategories"
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import { BACKEND_URL } from '@/shared/constants/ulrList';
 // import { getCookie } from '../../../Hooks/cookies';
 
 
@@ -18,7 +19,7 @@ const Index = () => {
     })
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_HOST_URL}/categories`)
+        fetch(`${BACKEND_URL}/admin/categories`)
             .then((res) => res.json())
             .then((data) => {
                 if (data.data) {
@@ -35,11 +36,11 @@ const Index = () => {
         }
     }
     const handleDeleteSubCategories = (mainID, subID) => {
-        fetch(`${process.env.REACT_APP_SERVER_HOST_URL}/categories/privet/subcategories`, {
+        fetch(`${BACKEND_URL}/admin/categories/subcategories`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                authorization: `Bearer ${getCookie()}`,
+                // authorization: `Bearer ${getCookie()}`,
             },
             body: JSON.stringify({ mainID, subID })
         })
@@ -51,11 +52,11 @@ const Index = () => {
             });
     }
     const handleDeleteCategories = (mainID) => {
-        fetch(`${process.env.REACT_APP_SERVER_HOST_URL}/categories/privet`, {
+        fetch(`${BACKEND_URL}/admin/categories`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                authorization: `Bearer ${getCookie()}`,
+                // authorization: `Bearer ${getCookie()}`,
             },
             body: JSON.stringify({ mainID })
         })
@@ -81,7 +82,7 @@ const Index = () => {
                                         <div className='element-container' onClick={() => {
                                             setSelect({ activeCategories: item._id })
                                         }}>
-                                            <Image src={`${process.env.REACT_APP_SERVER_HOST_URL}/${item.img}`} height={100} width={100} alt='' />
+                                            {/* <Image src={`${process.env.REACT_APP_SERVER_HOST_URL}/${item.img}`} height={100} width={100} alt='' /> */}
                                             {item.label}
                                         </div>
                                         <div className='action-container'>
@@ -101,7 +102,7 @@ const Index = () => {
                                             {
                                                 item.subCategories.map((subCate, subIndex) => {
                                                     return <li key={subCate._id}>
-                                                        {subCate.label}
+                                                        {subCate.label} 
 
                                                         <span onClick={() => handleDeleteSubCategories(item._id, subCate._id)}><RiDeleteBin5Line /></span>
                                                     </li>
@@ -114,7 +115,13 @@ const Index = () => {
                             })
                         }
                         <li>
-                            <button className='add-btn' onClick={handleAddCategoriesToggle}>< IoDuplicate /> Add Categories</button>
+                            <button className='add-btn' onClick={() => {
+                                setSelect({
+                                    categoriesID: "",
+                                    activeCategories: ""
+                                })
+                                handleAddCategoriesToggle()
+                            }}>< IoDuplicate /> Add Categories</button>
                         </li>
                     </ul>
                 </div>
