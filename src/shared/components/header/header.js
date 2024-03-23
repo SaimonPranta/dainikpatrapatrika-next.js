@@ -1,8 +1,13 @@
-import Image from "next/image";
+"use client"
 import "./style.scss"
+import {useEffect} from "react"
+import {useSelector, useDispatch} from "react-redux"
+import Image from "next/image";
 import { IoIosSearch } from "react-icons/io";
 import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import {BACKEND_URL} from "../../../shared/constants/ulrList"
+import {addCategories} from "../../../store/categories/reducer"
 const navigationArray = [
     {
         label: "প্রচ্ছদ",
@@ -245,7 +250,27 @@ const navigationArray = [
 
 ]
 
+
+
 const Index = () => {
+const {categories} = useSelector((state) => state)
+const dispatch = useDispatch()
+  
+
+ useEffect(() => {
+    if(categories.value.lenght){
+        return 
+    }
+       fetch(`${BACKEND_URL}/public/categories`)
+       .then((res) => res.json())
+       .then((data) => { 
+        if(data.data) {
+            dispatch(addCategories(data.data))
+        }
+       })
+ }, [])
+
+
     return (
         <header className="header">
             <div className="top-section">
@@ -283,19 +308,19 @@ const Index = () => {
             <nav className="container navigation-container" >
                 <ul>
                     {
-                        navigationArray.length > 0 && navigationArray.map((routeInfo, index) => {
-                            return <li key={index}>
-                                <Link href={`/${routeInfo.path}`} >
+                        categories?.value?.length > 0 && [...categories.value].map((routeInfo, index) => { 
+                            return <li key={routeInfo._id}>
+                                <Link href={`/${routeInfo.route}`} >
                                     {routeInfo.label}
                                 </Link>
                                 {
-                                    routeInfo?.subPagesList?.length > 0 && <>
+                                    routeInfo?.subCategories?.length > 0 && <>
                                         <button> <MdOutlineKeyboardArrowDown /> </button>
                                         <ul>
                                             {
-                                                routeInfo?.subPagesList.map((subRouteInfo, subIndex) => {
-                                                    return <li key={index} >
-                                                        <Link href={`/${routeInfo.path}/${subRouteInfo.path}`} >
+                                                routeInfo?.subCategories.map((subRouteInfo, subIndex) => {
+                                                    return <li key={subRouteInfo._id} >
+                                                        <Link href={`/${routeInfo.route}/${subRouteInfo.route}`} >
                                                             {routeInfo.label}
                                                         </Link> </li>
                                                 })
@@ -314,5 +339,7 @@ const Index = () => {
 
     );
 };
+
+ 
 
 export default Index;
