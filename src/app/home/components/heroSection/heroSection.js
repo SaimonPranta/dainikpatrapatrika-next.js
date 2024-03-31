@@ -2,6 +2,10 @@ import Link from 'next/link';
 import React from 'react';
 import "./style.scss"
 import Image from 'next/image';
+import { BACKEND_URL } from '@/shared/constants/ulrList';
+import { MdOutlineCommentsDisabled } from 'react-icons/md';
+import getImageUrl from '@/shared/functions/getImageUrl';
+import NewsList from '../NewsList/NewsList';
 
 const titleList = [
     "রাজিবপুরে দুই দিনব্যাপী বৃক্ষরোপণ কর্মসূচি ",
@@ -12,25 +16,37 @@ const titleList = [
     "ঈদে ট্রেনের অগ্রিম টিকিট বিক্রি শুরু ১৪ জুন "
 ]
 
-const topImage = [
-    {
-        img: "https://www.campuslive24.com/news/rabi-proxy-cl_2023-05-30-15-47-43.jpg",
-        title: "রাবির ভর্তি পরীক্ষায় প্রক্সি দিতে গিয়ে আটক ২",
-        description: "রাজশাহী বিশ্ববিদ্যালয়ের (রাবি) ভর্তি পরীক্ষায় প্রক্সি দিতে এসে দুই ব্যক্তি আটক হয়েছেন। মঙ্গলবার সকালে ‘এ’ ইউনিটের প্রথম শিফটের পরীক্ষা চলাকালে সন্দেহভাজন হিসেবে"
-    },
-    {
-        img: "https://campuslive24.com/news/201_2023-06-17-15-16-47.jpg",
-        title: "সাংবাদিক হত্যার বিচারের দাবিতে মানববন্ধন ও প্রতিবাদ সভা",
-        description: "রাজশাহী বিশ্ববিদ্যালয়ের (রাবি) ভর্তি পরীক্ষায় প্রক্সি দিতে এসে দুই ব্যক্তি আটক হয়েছেন। মঙ্গলবার সকালে ‘এ’ ইউনিটের প্রথম শিফটের পরীক্ষা চলাকালে সন্দেহভাজন হিসেবে"
-    },
-    {
-        img: "https://campuslive24.com/news/00000_2023-07-06-10-54-28.jpg",
-        title: "রাজিবপুরে দুই দিনব্যাপী বৃক্ষরোপণ কর্মসূচি",
-        description: "রাজশাহী বিশ্ববিদ্যালয়ের (রাবি) ভর্তি পরীক্ষায় প্রক্সি দিতে এসে দুই ব্যক্তি আটক হয়েছেন। মঙ্গলবার সকালে ‘এ’ ইউনিটের প্রথম শিফটের পরীক্ষা চলাকালে সন্দেহভাজন হিসেবে"
-    },
-]
+
  
-const Index = () => {
+const getNews = async () => {
+    try {
+        const response = await (await fetch(`${BACKEND_URL}/public/news`)).json();
+    if (response.data?.length) {
+        return response.data
+    }  
+    return []
+    } catch (error) {
+        return []
+    }
+}
+const getJobsNews = async () => {
+    try {
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${1}&category=চাকরি বাজার`)).json();
+    if (response.data?.length) {
+        return response.data
+    }  
+    return []
+    } catch (error) {
+        return []
+    }
+}
+ 
+const Index = async () => {
+const news = await getNews()
+const jobsNews = await getJobsNews()
+
+ 
+
     return (
         <div className='container hero-section'>
             <div className='top-section'>
@@ -56,24 +72,24 @@ const Index = () => {
             <div className='bottom-section'>
                 <div className="left-section">
                     {
-                        topImage.length > 0 && topImage.map((newsInfo, index) => {
-                            return <div key={index * Math.random() * Math.random()} className="cart">
-                                <Image src={newsInfo.img} height={100} width={100} alt='' />
+                        news.length > 0 && [...news].splice(0,3).map((newsInfo, index) => {
+                            return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
+                                <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
                                 <h2>{newsInfo.title}</h2>
                                 <p>{newsInfo.description.substring(0, 160)}</p>
-                            </div>
+                            </Link>
                             // 160
                         })
                     }
                 </div>
                 <div className="middle-section">
-                    {[...topImage, ...topImage].splice(0, 5).map((newsInfo, index) => {
-                        return <div key={index * Math.random() * Math.random()} className="cart" >
+                    { [...news].splice(3, 5).map((newsInfo, index) => {
+                        return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
                             <h2>{newsInfo.title}</h2>
                             <div className="inner-cart" >
-                                <p>{`${newsInfo.description.substring(0, 64)}...`}</p> <Image height={100} width={100} src={newsInfo.img} alt='' />
+                                <p>{`${newsInfo.description.substring(0, 64)}...`}</p> <Image height={100} width={100} src={getImageUrl(newsInfo.img)} alt='' />
                             </div>
-                        </div>
+                        </Link>
                     })}
                 </div>
                 <div className="right-section">
@@ -81,31 +97,21 @@ const Index = () => {
                         <h3>চাকরি বাজার</h3>
                          
                         {
-                            [...topImage].splice(0, 1).map((newsInfo, index) => {
-                                return <div key={index * Math.random() * Math.random()} className='news-cart' >
-                                    <Image height={100} width={100} src={newsInfo.img} alt='' />
+                            [...jobsNews].splice(0, 1).map((newsInfo, index) => {
+                                return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className='news-cart' >
+                                    <Image height={100} width={100} src={getImageUrl(newsInfo.img)} alt='' />
                                     <h2>{newsInfo.title}</h2>
-                                </div>
+                                </Link>
                             })
                         }
                     </div>
                     <div className='all-news'>
-                        <div className='navigation-container'><button>সর্বশেষ </button> <button>জনপ্রিয় </button></div>
-                        <div className='news-list'>
-                            {
-                                [...topImage, ...topImage, ...topImage, ...topImage, ...topImage, ...topImage].map((newsInfo, index) => {
-                                    return <div key={index} className='cart'>
-                                        <Image height={100} width={100} src={newsInfo.img} alt='' />
-                                        <h2>{newsInfo.title}</h2>
-                                    </div>
-                                })
-                            }
-                        </div>
+                        <NewsList/>
                     </div>
                 </div>
             </div>
         </div>
     );
 };
-
 export default Index;
+ 

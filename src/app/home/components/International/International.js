@@ -31,11 +31,11 @@ const adsList = [
     { link: "https://facebook.com", img: "https://campuslive24.com/uploads/Janata%20Bank%20Online-AD-01.gif" },
 ]
 
-const DhakaCampus = () => {
+const International = () => {
     return (
         <div className='container dhaka-campus'>
             <div className='title'>
-                <h4>ঢাকার ক্যাম্পাস</h4>
+                <h4>আন্তর্জাতিক</h4>
             </div>
             <div className='bottom-container'>
                 <div className='news-container'>
@@ -61,4 +61,4 @@ const DhakaCampus = () => {
     );
 };
 
-export default DhakaCampus;
+export default International;

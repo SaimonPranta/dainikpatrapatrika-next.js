@@ -2,46 +2,39 @@ import React from 'react';
 import "./style.scss"
 import Link from 'next/link';
 import Image from 'next/image';
+import { BACKEND_URL } from '@/shared/constants/ulrList';
+import getImageUrl from '@/shared/functions/getImageUrl';
+import textSlicer from '@/shared/functions/textSlicer';
 
-const newsArray = [
-    {
-        img: "https://campuslive24.com/news/maradona-cl_2023-05-24-18-44-20.jpg",
-        title: "ম্যারাডোনার ফেসবুক অ্যাকাউন্ট হ্যাক",
-        description: "ম্যারাডোনার ফেসবুক অ্যাকাউন্ট হ্যাক  ম্যারাডোনার ফেসবুক অ্যাকাউন্ট হ্যাক  আর্জেন্টিনার কিংবদন্তি ফুটবলার ডিয়োগো ম্যারাডোনার ফেসবুক অ্যাকাউন্ট হ্যাক হয়েছে। দেশটির নির্ভরযোগ্য সংবাদমাধ্যম টিওয়াইসি স্পোর্টস তাদের প্রতিবেদনে এ খ"
-    },
-    {
-        img: "https://campuslive24.com/feature_img_mini/mehdi_2023-05-21-19-02-39.jpg",
-        title: "ইংলিশ কাউন্টি লিগে খেলার প্রস্তাব পেলেন মিরাজ",
-        description: "ইংলিশ কাউন্টি দল ওয়ারউইকশায়ারের হয়ে ৫০ ওভারের একটি লিগ খেলার প্রস্তাব পেয়েছেন বাংলাদেশের অন্যতম তারকা ক্রিকেটার মেহেদী হাসান মিরাজ। ইংলিশ কাউন্টি দলে খেলার প্রস্তাব পাওয়ার বিষয়টি নিজেই নিশ্চিত করেছেন মিরাজ। জাতীয় দলের কোনও ম্যাচ না থাকলে আগামী আগস্টে শুরু হতে যাওয়া এই আসরে খেলবেন তিনি। মূলত গেল ঢাকা প্রিমিয়ার ডিভিশন লিগে মোহামেডানে মিরাজের সঙ্গে খেলা জ্যাক লিনটটের মাধ্যমে এই প্রস্তাব পান বাংলাদেশের এই অলরাউন্ডার।"
-    },
-    {
-        img: "https://campuslive24.com/feature_img_mini/mehdi_2023-05-21-19-02-39.jpg",
-        title: "ইংলিশ কাউন্টি লিগে খেলার প্রস্তাব পেলেন মিরাজ",
-        description: "ইংলিশ কাউন্টি দল ওয়ারউইকশায়ারের হয়ে ৫০ ওভারের একটি লিগ খেলার প্রস্তাব পেয়েছেন বাংলাদেশের অন্যতম তারকা ক্রিকেটার মেহেদী হাসান মিরাজ। ইংলিশ কাউন্টি দলে খেলার প্রস্তাব পাওয়ার বিষয়টি নিজেই নিশ্চিত করেছেন মিরাজ। জাতীয় দলের কোনও ম্যাচ না থাকলে আগামী আগস্টে শুরু হতে যাওয়া এই আসরে খেলবেন তিনি। মূলত গেল ঢাকা প্রিমিয়ার ডিভিশন লিগে মোহামেডানে মিরাজের সঙ্গে খেলা জ্যাক লিনটটের মাধ্যমে এই প্রস্তাব পান বাংলাদেশের এই অলরাউন্ডার।"
-    },
-    {
-        img: "https://campuslive24.com/feature_img_mini/mehdi_2023-05-21-19-02-39.jpg",
-        title: "ইংলিশ কাউন্টি লিগে খেলার প্রস্তাব পেলেন মিরাজ ইংলিশ কাউন্টি লিগে খেলার প্রস্তাব পেলেন মিরাজ",
-        description: "ইংলিশ কাউন্টি দল ওয়ারউইকশায়ারের হয়ে ৫০ ওভারের একটি লিগ খেলার প্রস্তাব পেয়েছেন বাংলাদেশের অন্যতম তারকা ক্রিকেটার মেহেদী হাসান মিরাজ। ইংলিশ কাউন্টি দলে খেলার প্রস্তাব পাওয়ার বিষয়টি নিজেই নিশ্চিত করেছেন মিরাজ। জাতীয় দলের কোনও ম্যাচ না থাকলে আগামী আগস্টে শুরু হতে যাওয়া এই আসরে খেলবেন তিনি। মূলত গেল ঢাকা প্রিমিয়ার ডিভিশন লিগে মোহামেডানে মিরাজের সঙ্গে খেলা জ্যাক লিনটটের মাধ্যমে এই প্রস্তাব পান বাংলাদেশের এই অলরাউন্ডার।"
-    },
-    {
-        img: "https://campuslive24.com/feature_img_mini/mehdi_2023-05-21-19-02-39.jpg",
-        title: "ইংলিশ কাউন্টি লিগে খেলার প্রস্তাব পেলেন মিরাজ",
-        description: "ইংলিশ কাউন্টি দল ওয়ারউইকশায়ারের হয়ে ৫০ ওভারের একটি লিগ খেলার প্রস্তাব পেয়েছেন বাংলাদেশের অন্যতম তারকা ক্রিকেটার মেহেদী হাসান মিরাজ। ইংলিশ কাউন্টি দলে খেলার প্রস্তাব পাওয়ার বিষয়টি নিজেই নিশ্চিত করেছেন মিরাজ। জাতীয় দলের কোনও ম্যাচ না থাকলে আগামী আগস্টে শুরু হতে যাওয়া এই আসরে খেলবেন তিনি। মূলত গেল ঢাকা প্রিমিয়ার ডিভিশন লিগে মোহামেডানে মিরাজের সঙ্গে খেলা জ্যাক লিনটটের মাধ্যমে এই প্রস্তাব পান বাংলাদেশের এই অলরাউন্ডার।"
-    },
-    {
-        img: "https://campuslive24.com/feature_img_mini/mehdi_2023-05-21-19-02-39.jpg",
-        title: "ইংলিশ কাউন্টি লিগে খেলার প্রস্তাব পেলেন মিরাজ",
-        description: "ইংলিশ কাউন্টি দল ওয়ারউইকশায়ারের হয়ে ৫০ ওভারের একটি লিগ খেলার প্রস্তাব পেয়েছেন বাংলাদেশের অন্যতম তারকা ক্রিকেটার মেহেদী হাসান মিরাজ। ইংলিশ কাউন্টি দলে খেলার প্রস্তাব পাওয়ার বিষয়টি নিজেই নিশ্চিত করেছেন মিরাজ। জাতীয় দলের কোনও ম্যাচ না থাকলে আগামী আগস্টে শুরু হতে যাওয়া এই আসরে খেলবেন তিনি। মূলত গেল ঢাকা প্রিমিয়ার ডিভিশন লিগে মোহামেডানে মিরাজের সঙ্গে খেলা জ্যাক লিনটটের মাধ্যমে এই প্রস্তাব পান বাংলাদেশের এই অলরাউন্ডার।"
-    },
-    {
-        img: "https://campuslive24.com/feature_img_mini/mehdi_2023-05-21-19-02-39.jpg",
-        title: "ইংলিশ কাউন্টি লিগে খেলার প্রস্তাব পেলেন মিরাজ",
-        description: "ইংলিশ কাউন্টি দল ওয়ারউইকশায়ারের হয়ে ৫০ ওভারের একটি লিগ খেলার প্রস্তাব পেয়েছেন বাংলাদেশের অন্যতম তারকা ক্রিকেটার মেহেদী হাসান মিরাজ। ইংলিশ কাউন্টি দলে খেলার প্রস্তাব পাওয়ার বিষয়টি নিজেই নিশ্চিত করেছেন মিরাজ। জাতীয় দলের কোনও ম্যাচ না থাকলে আগামী আগস্টে শুরু হতে যাওয়া এই আসরে খেলবেন তিনি। মূলত গেল ঢাকা প্রিমিয়ার ডিভিশন লিগে মোহামেডানে মিরাজের সঙ্গে খেলা জ্যাক লিনটটের মাধ্যমে এই প্রস্তাব পান বাংলাদেশের এই অলরাউন্ডার।"
-    },
-]
+ 
+const getSportsNews = async () => {
+    try {
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${7}&category=খেলা`)).json();
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
+    } catch (error) {
+        return []
+    }
+}
+const getDebatesNews = async () => {
+    try {
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${5}&category=খেলা`)).json();
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
+    } catch (error) {
+        return []
+    }
+}
 
-const Sports = () => {
+
+const Sports = async () => {
+    const sportNews = await getSportsNews()
+    const debateNews = await getDebatesNews()
+
     return (
         <section className="container sport-debate-container">
             <div className='sports-section'>
@@ -50,12 +43,15 @@ const Sports = () => {
                 </div>
                 <div className='news-container'>
                     {
-                        [...newsArray].slice(0, 7).map((news, index) => {
+                        [...sportNews].map((news, index) => {
                             return <Link className='news-cart' href={"/"} key={index}>
-                                <Image src={news.img} height={100} width={100} alt='' />
+                                <Image src={getImageUrl(news.img)} height={100} width={100} alt='' />
                                 <div>
                                     <h2> {news.title}</h2>
-                                    <p>{news.description.slice(0, 64)}</p>
+                                    {
+                                        index === 0 ? <p>{textSlicer(news.description, 130, true)}</p> : <p>{textSlicer(news.description, 80, true)}</p>
+                                    }
+
                                 </div>
                             </Link>
                         })
@@ -69,13 +65,13 @@ const Sports = () => {
                 </div>
                 <div className='news-container'>
                     {
-                        [...newsArray].slice(0, 5).map((news, index) => {
+                        [...debateNews].map((news, index) => {
                             return <Link className='news-cart' href={"/"} key={index}>
                                 <div>
                                     <h2> {news.title}</h2>
                                     <p>{news.description.slice(0, 64)}</p>
                                 </div>
-                                <Image src={news.img} height={100} width={100} alt='' />
+                                <Image src={getImageUrl(news.img)} height={100} width={100} alt='' />
                             </Link>
                         })
                     }
