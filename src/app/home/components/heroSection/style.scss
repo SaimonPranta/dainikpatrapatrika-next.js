@@ -23,6 +23,9 @@
                 list-style: none;
                 display: flex;
                 justify-content: center;
+                &:last-child {
+                    background: transparent;
+                }
 
                 &:after {
                     position: relative;
@@ -48,7 +51,7 @@
 
     .bottom-section {
         display: grid;
-        grid-template-columns: 40% 30% auto[];
+        grid-template-columns: 40% 30% auto;
         gap: 10px;
         max-height: 760px !important;
         height: 760px; 
@@ -133,7 +136,7 @@
         .job-news {
             height: 45% !important;
             color: #000;
-            background: #f3f3f3 ;
+            background: #f3f3f3; 
 
             h3 {
                 width: 100%;
@@ -144,10 +147,12 @@
             }
             .news-cart{ 
                 display: inline-block;
-                text-decoration: none;
+                text-decoration: none; 
+                min-width: 100%;
                 img{
                     height: 200px;
                     width: 100%;
+                    min-width: 100%;
                 }
                 h2{
                     padding: 2px 5px 10px 5px;

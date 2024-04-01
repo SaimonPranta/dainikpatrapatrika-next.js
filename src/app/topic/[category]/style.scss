@@ -18,6 +18,47 @@
                     color: var(--default-color) !important;
                 }
             }
+
+            .news-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                width: 100%;
+                gap: 15px;
+
+                .news-cart {
+                    img {
+                        height: 200px;
+                        width: 100%;
+                    }
+
+                    h2 {
+                        font-size: 20px;
+                    }
+
+                    p {
+                        font-size: 16px;
+                    }
+
+                    &:nth-child(1) {
+                        grid-column: 1/3;
+                        grid-row: 1/3;
+
+                        h2 {
+                            font-size: 23px !important;
+
+                        }
+                        p{
+                            font-size: 18px; 
+                        }
+                        img {
+                            width: 100%;
+                            height: 450px !important;
+                        }
+                    }
+
+
+                }
+            }
         }
     }
 }

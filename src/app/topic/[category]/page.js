@@ -4,6 +4,7 @@ import Footer from '@/shared/components/Footer/Footer';
 import { BACKEND_URL } from '@/shared/constants/ulrList';
 import Image from "next/Image"
 import getImageUrl from '@/shared/functions/getImageUrl';
+import textSlicer from "@/shared/functions/textSlicer";
 
 
 const getCategory = async (category, subCategory) => {
@@ -18,24 +19,26 @@ const getCategory = async (category, subCategory) => {
     }
 }
 const getNews = async (categoryLabel, subCategoryLabel) => {
-    try { 
-       
-        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${6}&category=${categoryLabel}&subcategory=${subCategoryLabel}`)).json();
-       console.log("response ==>>", response.data.length)
+    try {  
+        console.log({
+            categoryLabel, subCategoryLabel
+        })
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${12}&category=${categoryLabel}&subcategory=${subCategoryLabel}`, { next: { revalidate: 300 } })).json();
+
+        console.log("response ==>>", response.data.length)
+
         if (response.data?.length) {
             return response.data
         }
         return []
-    } catch (error) {
+    } catch (error) {  
         console.log("error ==>>", error)
         return []
     }
 }
 const Page = async ({ params: { category }, searchParams: { subCategory } }) => {
     const {categoryLabel, subCategoryLabel} = await getCategory(category, subCategory)
-    const newsList = await getNews(categoryLabel, subCategoryLabel) 
-    console.log("newsList ==>>", newsList.length)
-
+    const newsList = await getNews(categoryLabel, subCategoryLabel)  
     return (
         <div className="news-topic-container">
             <Header />
@@ -55,8 +58,10 @@ const Page = async ({ params: { category }, searchParams: { subCategory } }) => 
                             newsList.map((newsInfo, index) => {
                                 return <div key={index} className="news-cart" >
                                 <Image src={getImageUrl(newsInfo.img)} alt="" height={100} width={100} />
-                                <h2>{newsInfo.title}</h2>
-                                <p>{newsInfo.description}</p>
+                                <h2>{textSlicer(newsInfo.title, 70)}</h2>
+                               {
+                                index === 0  ? <p>{textSlicer(newsInfo.description, 350, true)}</p> :  <p>{textSlicer(newsInfo.description, 130, true)}</p>
+                               }
                                 </div>
                             })
                         }

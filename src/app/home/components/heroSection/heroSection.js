@@ -17,14 +17,14 @@ const titleList = [
 ]
 
 
- 
+
 const getNews = async () => {
     try {
         const response = await (await fetch(`${BACKEND_URL}/public/news`)).json();
-    if (response.data?.length) {
-        return response.data
-    }  
-    return []
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
     } catch (error) {
         return []
     }
@@ -32,20 +32,20 @@ const getNews = async () => {
 const getJobsNews = async () => {
     try {
         const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${1}&category=চাকরি বাজার`)).json();
-    if (response.data?.length) {
-        return response.data
-    }  
-    return []
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
     } catch (error) {
         return []
     }
 }
- 
-const Index = async () => {
-const news = await getNews()
-const jobsNews = await getJobsNews()
 
- 
+const Index = async () => {
+    const news = await getNews()
+    const jobsNews = await getJobsNews()
+
+
 
     return (
         <div className='container hero-section'>
@@ -58,10 +58,10 @@ const jobsNews = await getJobsNews()
                 <marquee>
                     <ul>
                         {
-                            titleList.length > 0 && titleList.map((title, index) => {
+                            [...news, ...jobsNews].map((newInfo, index) => {
                                 return <li key={index}>
                                     <Link href="/" >
-                                        {title}
+                                        {newInfo.title}
                                     </Link>
                                 </li>
                             })
@@ -72,7 +72,7 @@ const jobsNews = await getJobsNews()
             <div className='bottom-section'>
                 <div className="left-section">
                     {
-                        news.length > 0 && [...news].splice(0,3).map((newsInfo, index) => {
+                        news.length > 0 && [...news].splice(0, 3).map((newsInfo, index) => {
                             return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
                                 <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
                                 <h2>{newsInfo.title}</h2>
@@ -83,7 +83,7 @@ const jobsNews = await getJobsNews()
                     }
                 </div>
                 <div className="middle-section">
-                    { [...news].splice(3, 5).map((newsInfo, index) => {
+                    {[...news].splice(3, 5).map((newsInfo, index) => {
                         return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
                             <h2>{newsInfo.title}</h2>
                             <div className="inner-cart" >
@@ -95,7 +95,7 @@ const jobsNews = await getJobsNews()
                 <div className="right-section">
                     <div className='job-news' >
                         <h3>চাকরি বাজার</h3>
-                         
+
                         {
                             [...jobsNews].splice(0, 1).map((newsInfo, index) => {
                                 return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className='news-cart' >
@@ -106,7 +106,7 @@ const jobsNews = await getJobsNews()
                         }
                     </div>
                     <div className='all-news'>
-                        <NewsList/>
+                        <NewsList />
                     </div>
                 </div>
             </div>
@@ -114,4 +114,3 @@ const jobsNews = await getJobsNews()
     );
 };
 export default Index;
- 

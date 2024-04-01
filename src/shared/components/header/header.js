@@ -1,31 +1,31 @@
 "use client"
 import "./style.scss"
-import {useEffect} from "react"
-import {useSelector, useDispatch} from "react-redux"
+import { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import Image from "next/image";
 import { IoIosSearch } from "react-icons/io";
 import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import {BACKEND_URL} from "../../../shared/constants/ulrList"
-import {addCategories} from "../../../store/categories/reducer"
+import { BACKEND_URL } from "../../../shared/constants/ulrList"
+import { addCategories } from "../../../store/categories/reducer"
 
 const Index = () => {
-const {categories} = useSelector((state) => state)
-const dispatch = useDispatch()
-  
+    const { categories } = useSelector((state) => state)
+    const dispatch = useDispatch()
 
- useEffect(() => {
-    if(categories.value.lenght){
-        return 
-    }
-       fetch(`${BACKEND_URL}/public/categories`)
-       .then((res) => res.json())
-       .then((data) => { 
-        if(data.data) {
-            dispatch(addCategories(data.data))
+
+    useEffect(() => {
+        if (categories.value.length) {
+            return
         }
-       })
- }, [])
+        fetch(`${BACKEND_URL}/public/categories`)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.data) {
+                    dispatch(addCategories(data.data))
+                }
+            })
+    }, [])
 
 
     return (
@@ -64,8 +64,13 @@ const dispatch = useDispatch()
             </div>
             <nav className="container navigation-container" >
                 <ul>
+                    <li >
+                        <Link href="/" >
+                            প্রচ্ছদ
+                        </Link>
+                    </li>
                     {
-                        categories?.value?.length > 0 && [...categories.value].map((routeInfo, index) => { 
+                        categories?.value?.length > 0 && [...categories.value].map((routeInfo, index) => {
                             return <li key={routeInfo._id}>
                                 <Link href={`/topic/${routeInfo.route}`} >
                                     {routeInfo.label}
@@ -78,7 +83,7 @@ const dispatch = useDispatch()
                                                 routeInfo?.subCategories.map((subRouteInfo, subIndex) => {
                                                     return <li key={subRouteInfo._id} >
                                                         <Link href={`/topic/${routeInfo.route}?subCategory=${subRouteInfo.route}`} >
-                                                            {routeInfo.label}
+                                                            {subRouteInfo.label}
                                                         </Link> </li>
                                                 })
                                             }
@@ -97,6 +102,6 @@ const dispatch = useDispatch()
     );
 };
 
- 
+
 
 export default Index;
