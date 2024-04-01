@@ -67,7 +67,7 @@ const dispatch = useDispatch()
                     {
                         categories?.value?.length > 0 && [...categories.value].map((routeInfo, index) => { 
                             return <li key={routeInfo._id}>
-                                <Link href={`/${routeInfo.route}`} >
+                                <Link href={`/topic/${routeInfo.route}`} >
                                     {routeInfo.label}
                                 </Link>
                                 {
@@ -77,7 +77,7 @@ const dispatch = useDispatch()
                                             {
                                                 routeInfo?.subCategories.map((subRouteInfo, subIndex) => {
                                                     return <li key={subRouteInfo._id} >
-                                                        <Link href={`/${routeInfo.route}/${subRouteInfo.route}`} >
+                                                        <Link href={`/topic/${routeInfo.route}?subCategory=${subRouteInfo.route}`} >
                                                             {routeInfo.label}
                                                         </Link> </li>
                                                 })

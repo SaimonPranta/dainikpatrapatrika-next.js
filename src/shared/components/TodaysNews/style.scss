@@ -1,0 +1,22 @@
+.today-news{
+    .title-container{
+        h3{
+            font-size: 18px;
+            font-weidth: 600;
+
+        }
+    }
+    .news-list{
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        img{
+            height: 100px;
+            width: 100%;
+        }
+        h2{
+            font-size: 16px;
+            font-weidth: 600;
+        }
+    }
+}

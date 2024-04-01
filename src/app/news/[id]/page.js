@@ -8,6 +8,10 @@ import Image from "next/Image"
 import getImageUrl from '@/shared/functions/getImageUrl';
 import convertedToBanglaDate from '@/shared/functions/convertedToBanglaDate';
 import { WiTime8 } from "react-icons/wi";
+import textSlicer from "@/shared/functions/textSlicer"
+import TodaysNews from "@/shared/components/TodaysNews/TodaysNews"
+import Footer from '@/shared/components/Footer/Footer';
+
 
 const adsContainer = [
     "https://tpc.googlesyndication.com/simgad/9816891373495023339",
@@ -45,64 +49,67 @@ const Index = async ({ params: { id } }) => {
     return (
         <>
             <Header />
-
-            <div className='container news-details'>
-                <div className="main-news-container">
-                    <div className="categories-container">
-                        <Link href="/" >
-                            <FaHome />
-                        </Link>
-                        <span>
-                            <MdKeyboardArrowRight />
-                        </span>
-                        {newsDetails.category && <Link href={`/news/${newsDetails.categoriesRoute}`} >
-                            <p>{newsDetails.category}</p>
-                        </Link>}
-                        {newsDetails.subcategory && <>
+            <div className="container news-details-container">
+                <div className=' news-details'>
+                    <div className="main-news-container">
+                        <div className="categories-container">
+                            <Link href="/" >
+                                <FaHome />
+                            </Link>
                             <span>
                                 <MdKeyboardArrowRight />
                             </span>
-                            <Link href={`/news/${newsDetails.subCategoriesRoute}`} >
-                                <p>{newsDetails.subcategory}</p>
-                            </Link>
-                        </>}
-                    </div>
-                    <div className="news-container">
-                        <h2>{newsDetails.title}</h2>
-                        <Image src={getImageUrl(newsDetails.img)} height="100" width="100" alt="" />
-                        <p>{newsDetails.description}</p>
-                        <div> <WiTime8 /> <p>প্রকাশিত: {convertedToBanglaDate(newsDetails.createdAt)}</p></div>
-
-                    </div>
-                </div>
-                <div className="related-news-container">
-                    <div className="ads-section">
-                        {
-                            [...adsContainer].map((img, index) => {
-                                return <Link href="/" key={index} >
-                                    <Image src={img} height={100} width={100} alt="" />
+                            {newsDetails.category && <Link href={`/news/${newsDetails.categoriesRoute}`} >
+                                <p>{newsDetails.category}</p>
+                            </Link>}
+                            {newsDetails.subcategory && <>
+                                <span>
+                                    <MdKeyboardArrowRight />
+                                </span>
+                                <Link href={`/news/${newsDetails.subCategoriesRoute}`} >
+                                    <p>{newsDetails.subcategory}</p>
                                 </Link>
-                            })
-                        }
-
-                    </div>
-                    <div className="news-section">
-                        <div className="title">
-                            <p>এ সম্পর্কিত খবর</p>
+                            </>}
                         </div>
-                        <div className="new-list">
+                        <div className="news-container">
+                            <h2>{newsDetails.title}</h2>
+                            <Image src={getImageUrl(newsDetails.img)} height="100" width="100" alt="" />
+                            <p>{newsDetails.description}</p>
+                            <div> <WiTime8 /> <p>প্রকাশিত: {convertedToBanglaDate(newsDetails.createdAt)}</p></div>
+
+                        </div>
+                    </div>
+                    <div className="related-news-container">
+                        <div className="ads-section">
                             {
-                                [...newsList].slice(0, 5).map((newsInfo, index) => {
-                                    return <Link href="" key={index} className="cart">
-                                      <h6>{newsInfo.title}</h6>
-                                       <Image src={getImageUrl(newsInfo.img)} height="100" width="100" alt="" />
+                                [...adsContainer].map((img, index) => {
+                                    return <Link href="/" key={index} >
+                                        <Image src={img} height={100} width={100} alt="" />
                                     </Link>
                                 })
                             }
-                         </div>
+
+                        </div>
+                        <div className="news-section">
+                            <div className="title">
+                                <p>এ সম্পর্কিত খবর</p>
+                            </div>
+                            <div className="new-list">
+                                {
+                                    [...newsList].slice(0, 5).map((newsInfo, index) => {
+                                        return <Link href="" key={index} className="cart">
+                                            <h6>{textSlicer(newsInfo.title, 79)}</h6>
+                                            <Image src={getImageUrl(newsInfo.img)} height="100" width="100" alt="" />
+                                        </Link>
+                                    })
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <TodaysNews/>
             </div>
+            <Footer/>
         </>
     );
 };

@@ -1,0 +1,23 @@
+.news-topic-container {
+    .main-section {
+        .top-section {
+            margin-top: 30px;
+            .title-section {
+                display: flex;
+                gap: 10px;
+                align-items: end;
+
+                h3 {
+                    font-size: 27px;
+                    color: var(--default-color) !important;
+
+                }
+
+                p {
+                    font-size: 18px;
+                    color: var(--default-color) !important;
+                }
+            }
+        }
+    }
+}

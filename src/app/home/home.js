@@ -5,7 +5,7 @@ import AdsList from './components/AdsList/AdsList';
 import DhakaCampus from './components/International/International';
 import VideoGallery from './components/VideoGallery/VideoGallery';
 import SportsAndDebate from './components/SportsAndDebate/SportsAndDebate';
-import Footer from './components/Footer/Footer';
+import Footer from '@/shared/components/Footer/Footer';
 
 const Index = () => {
     return (
