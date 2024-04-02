@@ -7,17 +7,6 @@ import { MdOutlineCommentsDisabled } from 'react-icons/md';
 import getImageUrl from '@/shared/functions/getImageUrl';
 import NewsList from '../NewsList/NewsList';
 
-const titleList = [
-    "রাজিবপুরে দুই দিনব্যাপী বৃক্ষরোপণ কর্মসূচি ",
-    "হেনা ফাউন্ডেশন এর কেন্দ্রীয় নতুন কমিটি গঠন ",
-    "সাংবাদিক হত্যার বিচারের দাবিতে মানববন্ধন ও প্রতিবাদ সভা ",
-    "রাজের সঙ্গে তিশা-সুনেরাহর গোপন ভিডিও ফাঁস ",
-    "খুকৃবি'র সিন্ডিকেট সদস্য মনোনীত হলেন পবিপ্রবির প্রফেসর সফিকুল ",
-    "ঈদে ট্রেনের অগ্রিম টিকিট বিক্রি শুরু ১৪ জুন "
-]
-
-
-
 const getNews = async () => {
     try {
         const response = await (await fetch(`${BACKEND_URL}/public/news`)).json();
@@ -44,8 +33,6 @@ const getJobsNews = async () => {
 const Index = async () => {
     const news = await getNews()
     const jobsNews = await getJobsNews()
-
-
 
     return (
         <div className='container hero-section'>
@@ -77,8 +64,7 @@ const Index = async () => {
                                 <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
                                 <h2>{newsInfo.title}</h2>
                                 <p>{newsInfo.description.substring(0, 160)}</p>
-                            </Link>
-                            // 160
+                            </Link> 
                         })
                     }
                 </div>

@@ -29,7 +29,6 @@ const Index = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.data) {
-                        console.log("data.data", data.data)
                         setCurrentPage(page - 1)
                  setLoading(false)
                  
@@ -61,10 +60,7 @@ const Index = () => {
             window.innerHeight + document.documentElement.scrollTop >=
             Number(document.documentElement.offsetHeight - 1)
         ) {
-            console.log("currentPage", currentPage)
-            console.log("page", page - 1)
             if (currentPage === page - 1) {
-                console.log("Enter to the function")
                 setPage((state) => state + 1);
             }
         }

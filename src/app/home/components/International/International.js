@@ -23,6 +23,13 @@ const newsArray = [
         description: "জগন্নাথ বিশ্ববিদ্যালয়ের (জবি) শিক্ষা ও গবেষণা ইনস্টিটিউট (আইইআর) এবং পোগোজ ল্যাবরেটরি স্কুল এন্ড কলেজের প্রধান ফটকের পাশ...",
         path: "/"
 
+    },
+    {
+        img: "https://campuslive24.com/feature_img_mini/jnulive_2023-05-25-23-50-44.jpg",
+        title: "রাতের আধারে জবিতে কাটা হলো ৫০ বছরের পুরনো গাছ!",
+        description: "জগন্নাথ বিশ্ববিদ্যালয়ের (জবি) শিক্ষা ও গবেষণা ইনস্টিটিউট (আইইআর) এবং পোগোজ ল্যাবরেটরি স্কুল এন্ড কলেজের প্রধান ফটকের পাশ...",
+        path: "/"
+
     }
 ]
 const adsList = [
@@ -33,14 +40,14 @@ const adsList = [
 
 const International = () => {
     return (
-        <div className='container dhaka-campus'>
+        <div className='container international-container'>
             <div className='title'>
                 <h4>আন্তর্জাতিক</h4>
             </div>
             <div className='bottom-container'>
                 <div className='news-container'>
-                    {[...newsArray].slice(0, 3).map((newsInfo, index) => {
-                        return <Link key={index} href={newsInfo.img} >
+                    {[...newsArray].slice(0, 4).map((newsInfo, index) => {
+                        return <Link key={index}  href={`/news/${newsInfo._id}`}   >
                             <Image src={newsInfo.img} height={100} width={100} alt='' />
                             <h2>{newsInfo.title}</h2>
                             <p>{newsInfo.description}</p>
@@ -50,9 +57,9 @@ const International = () => {
                 <div className='ads-section'>
                     {
                         [...adsList].map((newsInfo, index) => {
-                            return <a href={newsInfo.link} key={index} >
+                            return <Link  href={`/news/${newsInfo._id}`}  key={index} >
                                 <Image src={newsInfo.img} height={100} width={100} alt='' />
-                            </a>
+                            </Link>
                         })
                     }
                 </div>

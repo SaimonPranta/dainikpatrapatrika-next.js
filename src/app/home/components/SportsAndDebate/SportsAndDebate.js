@@ -44,12 +44,12 @@ const Sports = async () => {
                 <div className='news-container'>
                     {
                         [...sportNews].map((news, index) => {
-                            return <Link className='news-cart' href={"/"} key={index}>
+                            return <Link className='news-cart' href={`/news/${news._id}`}  key={index}>
                                 <Image src={getImageUrl(news.img)} height={100} width={100} alt='' />
                                 <div>
                                     <h2> {news.title}</h2>
                                     {
-                                        index === 0 ? <p>{textSlicer(news.description, 130, true)}</p> : <p>{textSlicer(news.description, 80, true)}</p>
+                                        index === 0 ? <p>{textSlicer(news.description, 130, true)}</p> : <p>{textSlicer(news.description, 65, true)}</p>
                                     }
 
                                 </div>
@@ -66,10 +66,10 @@ const Sports = async () => {
                 <div className='news-container'>
                     {
                         [...debateNews].map((news, index) => {
-                            return <Link className='news-cart' href={"/"} key={index}>
+                            return <Link className='news-cart' href={`/news/${news._id}`}  key={index}>
                                 <div>
                                     <h2> {news.title}</h2>
-                                    <p>{news.description.slice(0, 64)}</p>
+                                    <p>{textSlicer(news.description, 100, true)}</p>
                                 </div>
                                 <Image src={getImageUrl(news.img)} height={100} width={100} alt='' />
                             </Link>

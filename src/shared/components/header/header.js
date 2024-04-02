@@ -8,6 +8,8 @@ import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BACKEND_URL } from "../../../shared/constants/ulrList"
 import { addCategories } from "../../../store/categories/reducer"
+import { TiThMenu } from "react-icons/ti";
+
 
 const Index = () => {
     const { categories } = useSelector((state) => state)
@@ -27,6 +29,15 @@ const Index = () => {
             })
     }, [])
 
+    const toggleNavigation = () => {
+        const nav = document.getElementById("navigation");
+        const navBtn = document.getElementById("navigation-btn");
+        if (nav) {
+            nav.classList.toggle("active");
+            navBtn.classList.toggle("active");
+        }
+    }
+    
 
     return (
         <header className="header">
@@ -59,10 +70,16 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-            <div className="logo-container">
-                <Image width="100" height="100" src="https://campuslive24.com/photos/2022-04-10-03-logo-logo.png" alt="" />
+            <div className="container middle-container">
+                <Link href="/" className="logo-container">
+                    <Image width="100" height="100" src="https://campuslive24.com/photos/2022-04-10-03-logo-logo.png" alt="" />
+                </Link>
+                <div className="menu-btn-container">
+                    <button onClick={toggleNavigation} id="navigation-btn" ><TiThMenu /></button>
+                </div>
             </div>
-            <nav className="container navigation-container" >
+
+            <nav className="container navigation-container" id="navigation" >
                 <ul>
                     <li >
                         <Link href="/" >

@@ -23,7 +23,6 @@ const page = () => {
         fetch(`${BACKEND_URL}/admin/news?id=${id}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log("data ===>>", data)
                 if (data.data) {
                     setInput(data.data)
                 }
@@ -42,7 +41,6 @@ const page = () => {
             })
     }, [])
 
-console.log("input ==>>", input)
 
     const handleBackNavigation = () => {
         router.push("/admin/news")
@@ -93,7 +91,6 @@ console.log("input ==>>", input)
                 }
             })
     }
-    console.log("subCategores", subcategories)
 
     return (
         <AdminLayouts>

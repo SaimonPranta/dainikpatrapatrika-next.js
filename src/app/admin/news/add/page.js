@@ -76,7 +76,6 @@ const page = () => {
                 }
             })
     }
-    console.log("subCategores", subcategories)
  
     return (
         <AdminLayouts>

@@ -19,20 +19,15 @@ const getCategory = async (category, subCategory) => {
     }
 }
 const getNews = async (categoryLabel, subCategoryLabel) => {
-    try {  
-        console.log({
-            categoryLabel, subCategoryLabel
-        })
+    try {   
         const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${12}&category=${categoryLabel}&subcategory=${subCategoryLabel}`, { next: { revalidate: 300 } })).json();
 
-        console.log("response ==>>", response.data.length)
 
         if (response.data?.length) {
             return response.data
         }
         return []
     } catch (error) {  
-        console.log("error ==>>", error)
         return []
     }
 }

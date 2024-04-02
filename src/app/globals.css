@@ -42,3 +42,11 @@ p, h1, h2, h3, h4, h5, h6, button{
     text-wrap: balance;
   }
 }
+
+
+@media only screen and (min-width:200px) and (max-width:1500px) {
+  .container{
+    margin: auto;
+    width: calc(100% - 20px); 
+  }
+}

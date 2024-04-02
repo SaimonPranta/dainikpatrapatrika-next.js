@@ -1,4 +1,4 @@
-.dhaka-campus {
+.international-container {
     color: #000;
 
     .title {
@@ -11,7 +11,7 @@
 
         }
     }
-    
+
 
     .bottom-container {
         display: grid;
@@ -34,6 +34,10 @@
                 box-sizing: border-box;
                 box-shadow: 1px 4px 4px #dfd6d6,
                     1px 4px 6px #dfd6d6;
+
+                &:last-child {
+                    display: none;
+                }
 
                 h2 {
                     color: #000;
@@ -60,12 +64,60 @@
             justify-content: center;
             gap: 10px;
 
-            a{
-                width: 100%; 
+            a {
+                width: 100%;
+
                 img {
                     width: 100%;
                 }
             }
         }
     }
+}
+
+@media only screen and (min-width:200px) and (max-width:1000px) {
+
+    .international-container {
+        .bottom-container {
+            display: grid;
+            grid-template-columns: 1fr;
+
+            .ads-section {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+    }
+
+}
+@media only screen and (min-width:200px) and (max-width:750px) {
+
+    .international-container {
+        .bottom-container { 
+            .news-container { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px;
+                a { 
+                    &:last-child {
+                        display: inline-block;
+                    }
+                    h2 {
+                        color: #000;
+                        font-weight: 600;
+                        font-size: 17px;
+                    }
+                    p { 
+                        font-weight: 400;
+                        font-size: 14px;
+                    } 
+    
+                }
+            }
+    
+        }
+    }
+
 }

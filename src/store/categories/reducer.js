@@ -6,9 +6,7 @@ export const counterSlice = createSlice({
     value: [],
   },
   reducers: {
-    addCategories: (state, action) => { 
-      console.log("state of redux==>>", state)
-      console.log("action ==>>", action)
+    addCategories: (state, action) => {  
       state.value  = action.payload
     },
     

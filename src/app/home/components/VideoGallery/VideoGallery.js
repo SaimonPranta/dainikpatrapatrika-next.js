@@ -26,7 +26,24 @@ const videoArray = [
     },
 ]
 
-const VideoGallery = () => {
+const getVideos = async () => {
+    try {
+        let response = await (await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=UUewt9x2hSiEn1rhlrBMuz1A&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`)).json()
+        if (response.items) {
+            return response.items
+        }
+        return []
+
+    } catch (error) {
+        return []
+    }
+
+}
+
+const VideoGallery = async () => {
+
+    const vidList = await getVideos()
+
     return (
         <div className='video-gallery-section'>
             <div className='container inner-gallery'>
@@ -35,10 +52,10 @@ const VideoGallery = () => {
                 </div>
                 <div className="video-section" >
                     {
-                        [...videoArray].map((news, index) => {
+                        [...vidList].map((news, index) => {
                             return <Link className='news-cart' href={"/"} key={index} >
-                                <Image src={news.img} alt='' height={100} width={100} />
-                                <h2>{news.title}</h2>
+                                <Image src={news?.snippet?.thumbnails?.default?.url} alt='' height={100} width={100} />
+                                <h2>{news?.snippet?.title}</h2>
                                 <Image className='paly-icon' src={palyIcons} alt='' height={100} width={100} />
                             </Link>
                         })
