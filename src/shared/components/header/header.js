@@ -1,6 +1,6 @@
 "use client"
 import "./style.scss"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import Image from "next/image";
 import { IoIosSearch } from "react-icons/io";
@@ -9,12 +9,14 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BACKEND_URL } from "../../../shared/constants/ulrList"
 import { addCategories } from "../../../store/categories/reducer"
 import { TiThMenu } from "react-icons/ti";
-
+import { useRouter } from 'next/navigation';
+import { FaSearch } from "react-icons/fa";
 
 const Index = () => {
+    const [search, setSearch] = useState("")
     const { categories } = useSelector((state) => state)
     const dispatch = useDispatch()
-
+    const router = useRouter();
 
     useEffect(() => {
         if (categories.value.length) {
@@ -37,7 +39,18 @@ const Index = () => {
             navBtn.classList.toggle("active");
         }
     }
-    
+    const handleVideoNavigation = () => {
+        router.push("/video")
+    }
+    const hangleSearchNavigation = () => {
+        router.push(`/news?search=${search}`)
+    }
+    const setSearchEnable = () => {
+        const searchBtn = document.getElementById("search-btn")
+        const searchBoxContainer = document.getElementById("search-box-container")
+        searchBtn.classList.toggle("disable")
+        searchBoxContainer.classList.toggle("active")
+    }
 
     return (
         <header className="header">
@@ -57,16 +70,21 @@ const Index = () => {
                             <button>
                                 English
                             </button>
-                            <button>
+                            <button onClick={handleVideoNavigation}>
                                 Video
                             </button>
                         </div>
-                        <div className="search-container">
-                            <button>
+                        <div className="search-container" id="search-btn">
+                            <button onClick={setSearchEnable}>
                                 <IoIosSearch />
                             </button>
                         </div>
 
+                    </div>
+                </div>
+                <div className="container search-box-container" id="search-box-container">
+                    <div className="inner-container">
+                     <label>অনুসন্ধান</label>  <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} /> <button onClick={hangleSearchNavigation}><FaSearch /></button>
                     </div>
                 </div>
             </div>

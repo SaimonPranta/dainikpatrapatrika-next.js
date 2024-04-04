@@ -8,6 +8,7 @@ import SportsAndDebate from './components/SportsAndDebate/SportsAndDebate';
 import Footer from '@/shared/components/Footer/Footer';
 
 const Index = () => {
+    
     return (
         <div>
             <Header/>
