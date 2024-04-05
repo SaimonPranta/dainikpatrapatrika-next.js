@@ -11,6 +11,7 @@ import { addCategories } from "../../../store/categories/reducer"
 import { TiThMenu } from "react-icons/ti";
 import { useRouter } from 'next/navigation';
 import { FaSearch } from "react-icons/fa";
+import logo from "@/assets/images/home/dainikpatropatrika.jpg"
 
 const Index = () => {
     const [search, setSearch] = useState("")
@@ -84,13 +85,13 @@ const Index = () => {
                 </div>
                 <div className="container search-box-container" id="search-box-container">
                     <div className="inner-container">
-                     <label>অনুসন্ধান</label>  <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} /> <button onClick={hangleSearchNavigation}><FaSearch /></button>
+                        <label>অনুসন্ধান</label>  <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} /> <button onClick={hangleSearchNavigation}><FaSearch /></button>
                     </div>
                 </div>
             </div>
             <div className="container middle-container">
                 <Link href="/" className="logo-container">
-                    <Image width="100" height="100" src="https://campuslive24.com/photos/2022-04-10-03-logo-logo.png" alt="" />
+                    <Image width="100" height="100" src={logo} alt="" />
                 </Link>
                 <div className="menu-btn-container">
                     <button onClick={toggleNavigation} id="navigation-btn" ><TiThMenu /></button>

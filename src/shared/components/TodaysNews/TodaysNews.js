@@ -1,6 +1,7 @@
 import React from 'react';
 import "./style.scss"
 import Image from 'next/image';
+import Link from 'next/Link';
 import getImageUrl from '@/shared/functions/getImageUrl';
 import { BACKEND_URL } from '@/shared/constants/ulrList';
 import textSlicer from '@/shared/functions/textSlicer';
@@ -29,10 +30,10 @@ const TodaysNews = async () => {
             <div className='news-list'>
                 {
                     newsList.map((news, index) => {
-                        return <div key={index} className='news-cart'>
+                        return <Link href={`/news/${news._id}`} key={index} className='news-cart'>
                             <Image src={getImageUrl(news.img)} alt='' height={100} width={100} />
                             <h2>{textSlicer(news.title, 60)}</h2>
-                        </div>
+                        </Link>
                     })
                 }
             </div>

@@ -11,6 +11,10 @@ import { WiTime8 } from "react-icons/wi";
 import textSlicer from "@/shared/functions/textSlicer"
 import TodaysNews from "@/shared/components/TodaysNews/TodaysNews"
 import Footer from '@/shared/components/Footer/Footer';
+import Share from "./modal/Share/Share"
+import { RiShareLine } from "react-icons/ri";
+import { GrPrint } from "react-icons/gr";
+
 
 
 const adsContainer = [
@@ -21,7 +25,6 @@ const adsContainer = [
 const getNews = async (id) => {
     try {
         let response = await (await fetch(`${BACKEND_URL}/public/news/${id}`)).json()
-
         if (response.data._id) {
             return response.data
         }
@@ -45,6 +48,7 @@ const getNewsList = async () => {
 const Index = async ({ params: { id } }) => {
     const newsDetails = await getNews(id)
     const newsList = await getNewsList()
+   
 
     return (
         <>
@@ -71,8 +75,22 @@ const Index = async ({ params: { id } }) => {
                                 </Link>
                             </>}
                         </div>
-                        <div className="news-container">
-                            <h2>{newsDetails.title}</h2>
+                        <div className="news-container" id="news-container">
+                            <div className="title-container">
+                                <h2>{newsDetails.title}</h2>
+                                {/* <div className="share-container">
+                                    <button>
+                                    <RiShareLine />
+                                    </button>
+                                    <button>
+                                    <GrPrint />
+                                    </button>    
+                                    <Share/>   
+                                </div> */}
+                                    <Share  />   
+
+                            </div>
+
                             <Image src={getImageUrl(newsDetails.img)} height="100" width="100" alt="" />
                             <p>{newsDetails.description}</p>
                             <div> <WiTime8 /> <p>প্রকাশিত: {convertedToBanglaDate(newsDetails.createdAt)}</p></div>
@@ -107,9 +125,10 @@ const Index = async ({ params: { id } }) => {
                         </div>
                     </div>
                 </div>
-                <TodaysNews/>
+                <TodaysNews />
             </div>
-            <Footer/>
+            {/* <Share/> */}
+            <Footer />
         </>
     );
 };
