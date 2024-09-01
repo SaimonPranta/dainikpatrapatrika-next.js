@@ -24,7 +24,11 @@ const adsContainer = [
 
 const getNews = async (id) => {
     try {
-        let response = await (await fetch(`${BACKEND_URL}/public/news/${id}`)).json()
+        let response = await (await fetch(`${BACKEND_URL}/public/news/${id}`, {
+            headers: {
+                // 'Cache-Control': 'no-cache', // Disable caching
+            }
+        })).json()
         if (response.data._id) {
             return response.data
         }
@@ -48,7 +52,6 @@ const getNewsList = async () => {
 const Index = async ({ params: { id } }) => {
     const newsDetails = await getNews(id)
     const newsList = await getNewsList()
-   
 
     return (
         <>
@@ -87,7 +90,7 @@ const Index = async ({ params: { id } }) => {
                                     </button>    
                                     <Share/>   
                                 </div> */}
-                                    <Share  />   
+                                <Share />
 
                             </div>
 
@@ -115,7 +118,7 @@ const Index = async ({ params: { id } }) => {
                             <div className="new-list">
                                 {
                                     [...newsList].slice(0, 5).map((newsInfo, index) => {
-                                        return <Link href="" key={index} className="cart">
+                                        return <Link key={index} href={`/news/${newsInfo._id}`} className="cart" >
                                             <h6>{textSlicer(newsInfo.title, 79)}</h6>
                                             <Image src={getImageUrl(newsInfo.img)} height="100" width="100" alt="" />
                                         </Link>

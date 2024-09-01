@@ -7,12 +7,18 @@ import { MdOutlineCommentsDisabled } from 'react-icons/md';
 import getImageUrl from '@/shared/functions/getImageUrl';
 import NewsList from '../NewsList/NewsList';
 
-const getNews = async () => {
+const getHeroNews = async () => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/news`)).json();
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit={10}`, {
+            headers: {
+                'Cache-Control': 'no-cache', // Disable caching
+            }
+        })).json();
         if (response.data?.length) {
             return response.data
         }
+
+
         return []
     } catch (error) {
         return []
@@ -31,7 +37,7 @@ const getJobsNews = async () => {
 }
 
 const Index = async () => {
-    const news = await getNews()
+    const news = await getHeroNews()
     const jobsNews = await getJobsNews()
 
     return (
@@ -47,7 +53,7 @@ const Index = async () => {
                         {
                             [...news, ...jobsNews].map((newInfo, index) => {
                                 return <li key={index}>
-                                    <Link href="/" >
+                                    <Link href={`/news/${newInfo._id}`} >
                                         {newInfo.title}
                                     </Link>
                                 </li>
@@ -59,23 +65,24 @@ const Index = async () => {
             <div className='bottom-section'>
                 <div className="left-section">
                     {
-                        news.length > 0 && [...news].splice(0, 3).map((newsInfo, index) => {
+                        news.length > 0 && news.splice(0, 3).map((newsInfo, index) => {
                             return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
                                 <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
                                 <h2>{newsInfo.title}</h2>
-                                <p>{newsInfo.description.substring(0, 160)}</p>
+                                <p>{newsInfo?.description?.substring(0, 160)}</p>
                             </Link> 
                         })
                     }
                 </div>
                 <div className="middle-section">
-                    {[...news].splice(3, 5).map((newsInfo, index) => {
+                    {news.length > 0 && news.splice(3, 5).map((newsInfo, index) => {
                         return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
                             <h2>{newsInfo.title}</h2>
                             <div className="inner-cart" >
                                 <p>{`${newsInfo.description.substring(0, 64)}...`}</p> <Image height={100} width={100} src={getImageUrl(newsInfo.img)} alt='' />
                             </div>
                         </Link>
+
                     })}
                 </div>
                 <div className="right-section">
@@ -83,7 +90,7 @@ const Index = async () => {
                         <h3>চাকরি বাজার</h3>
 
                         {
-                            [...jobsNews].splice(0, 1).map((newsInfo, index) => {
+                            jobsNews.splice(0, 1).map((newsInfo, index) => {
                                 return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className='news-cart' >
                                     <Image height={100} width={100} src={getImageUrl(newsInfo.img)} alt='' />
                                     <h2>{newsInfo.title}</h2>

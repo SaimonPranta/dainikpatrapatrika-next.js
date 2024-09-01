@@ -4,8 +4,7 @@ function convertToBengaliNumerals(number) {
 }
 
 const convertedToBanglaDate = (dateString) => {
-
-    const date = new Date(dateString);
+    const date = new Date(dateString) || new Date();
     const options = {
         year: 'numeric',
         month: 'long',

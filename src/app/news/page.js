@@ -23,7 +23,6 @@ const getNews = async (search) => {
 }
 
 const Index = async ({searchParams: {search}}) => { 
-    console.log("search==>>>", search)
     const vidList = await getNews(search)
     return (
         <>

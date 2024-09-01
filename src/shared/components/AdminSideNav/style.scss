@@ -29,14 +29,18 @@
                 margin: 0px;
                 padding: 0px;
                 width: 100%;
+                background: blue;
+                display: inline-block;
                 a {
                     display: inline-block;
                     text-decoration: none;
                     padding: 5px 15px;
+                    box-sizing: border-box;
                     color: #000;
                     border-bottom: 1px solid #f1ebeb;
                     background: #e4e4e4;
                     width: 100%;
+                    max-width: 100%;
                     &:hover{
                         background: #d6cccc;
                     }

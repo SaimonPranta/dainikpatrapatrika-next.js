@@ -8,42 +8,43 @@ import { BACKEND_URL } from "@/shared/constants/ulrList"
 import getImageUrl from '@/shared/functions/getImageUrl';
 import { useRouter } from 'next/navigation';
 import { FaSearch } from "react-icons/fa";
-
+import { IoSearch } from "react-icons/io5";
 
 const Index = () => {
     const [search, setSearch] = useState("")
+    const [input, setInput] = useState("")
     const [news, setNews] = useState([])
     const [page, setPage] = useState(1)
     const [currentPage, setCurrentPage] = useState(0)
-    const [loading, setLoading] = useState(false) 
-    const [initialSearch, setInitialSearch] = useState(false) 
+    const [loading, setLoading] = useState(false)
+    const [initialSearch, setInitialSearch] = useState(false)
     const router = useRouter();
 
     useEffect(() => {
         const callApi = () => {
             if (loading) {
                 return
-            } 
+            }
             setLoading(true)
             fetch(`${BACKEND_URL}/admin/news?page=${page}&search=${search}`)
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.data) {
                         setCurrentPage(page - 1)
-                 setLoading(false)
-                 
-                 if(search && !initialSearch){
-                    setInitialSearch(true)
-                    setNews( data.data)
-                 }else if(!search && initialSearch){
-                    setInitialSearch(false)
-                    setNews( data.data)
-                 } else{
-                    setNews((state) => {
-                        return [...state, ...data.data]
-                    })
-                 }
-                        
+                        setLoading(false)
+
+                        if (search && !initialSearch) {
+                            setInitialSearch(true)
+                            setNews(data.data)
+                        } else if (search && initialSearch) {
+                            setInitialSearch(false)
+                            setNews(data.data)
+                        } else {
+                            setNews((state) => {
+                                return [...state, ...data.data]
+                            })
+                        }
+
                     }
                 })
         }
@@ -88,20 +89,23 @@ const Index = () => {
     const handleAddNewsNavigation = () => {
         router.push("/admin/news/add")
     }
+
     return (
         <AdminLayouts>
             <div className='admin-news-page'>
                 <div className="add-news-container">
                     <button onClick={handleAddNewsNavigation}>Add News</button>
                 </div>
+
                 <div className="search-container" >
                     <div>
-                        <input type="text" placeholder="Search news" value={search} onChange={(e) => {
-                            setSearch(e.target.value)
+                        <IoSearch />
+                        <input type="text" placeholder="Search news" value={input} onChange={(e) => {
+                            setInput(e.target.value)
                             setPage(1)
                             setCurrentPage(0)
                         }} />
-                        <button><FaSearch /> </button>
+                        <button onClick={() => setSearch(input)}>Search</button>
                     </div>
 
                 </div>
@@ -113,7 +117,7 @@ const Index = () => {
                                     <Link href="" className="image-container"> <img src={getImageUrl(news.img)} alt="" /> </Link>
                                     <div>
 
-                                        <Link href="/" className="des-container">
+                                        <Link href={`/news/${news._id}`} className="des-container">
                                             <h6> {textSlicer(news.title, 42, true)}  </h6>
                                             <p>{textSlicer(news.description, 99, true)}</p>
 

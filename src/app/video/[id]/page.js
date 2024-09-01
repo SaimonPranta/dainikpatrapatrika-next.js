@@ -29,7 +29,6 @@ const getVideoDetails = async (id) => {
         }
         return {}
     } catch (error) {
-        console.log("error==>>", error)
         return {}
     }
 }

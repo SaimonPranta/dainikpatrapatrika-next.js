@@ -43,7 +43,7 @@ const Sports = async () => {
                 </div>
                 <div className='news-container'>
                     {
-                        [...sportNews].map((news, index) => {
+                        sportNews.map((news, index) => {
                             return <Link className='news-cart' href={`/news/${news._id}`}  key={index}>
                                 <Image src={getImageUrl(news.img)} height={100} width={100} alt='' />
                                 <div>

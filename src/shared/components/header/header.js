@@ -12,12 +12,15 @@ import { TiThMenu } from "react-icons/ti";
 import { useRouter } from 'next/navigation';
 import { FaSearch } from "react-icons/fa";
 import logo from "@/assets/images/home/dainikpatropatrika.jpg"
+import { usePathname } from 'next/navigation'
 
 const Index = () => {
     const [search, setSearch] = useState("")
     const { categories } = useSelector((state) => state)
     const dispatch = useDispatch()
     const router = useRouter();
+    const pathname = usePathname();
+    
 
     useEffect(() => {
         if (categories.value.length) {
@@ -101,14 +104,15 @@ const Index = () => {
             <nav className="container navigation-container" id="navigation" >
                 <ul>
                     <li >
-                        <Link href="/" >
+                        <Link href="/" className={`/` === pathname  ? "active" : ""}>
                             প্রচ্ছদ
                         </Link>
                     </li>
                     {
                         categories?.value?.length > 0 && [...categories.value].map((routeInfo, index) => {
+                            console.log("currentPathname ===>>>", pathname)
                             return <li key={routeInfo._id}>
-                                <Link href={`/topic/${routeInfo.route}`} >
+                                <Link href={`/topic/${routeInfo.route}`} className={`/topic/${routeInfo.route}` === pathname  ? "active" : ""} >
                                     {routeInfo.label}
                                 </Link>
                                 {

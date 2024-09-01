@@ -89,50 +89,57 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 40px;
-        margin-bottom: 15px;
+        height: 35px;
+        margin: 25px;
 
         div {
-            width: 300px;
+            width: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid var(--default-color);
-            background: transfarent;
-            height: 35px;
+            height: 55px;
             border-radius: 5px;
+            padding-left: 10px;
+            border: 2px solid var(--default-color);
+            color: #b19797;
 
             input::placeholder {
-                color: var(--default-color);
+                color: #b19797;
+
             }
-
-            button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-
-                svg {
-                    color: #FFF;
-                }
+ 
+            svg {
+                height: 40px;
+                width: 40px;
             }
 
             input {
                 width: 100%;
                 border: none;
                 outline: none;
-                padding: 5px;
+                padding: 0px;
                 height: 100%;
                 box-sizing: border-box;
-                background: none;
+                // background: none;
+                padding: 0px 0px 0px 10px;
+
             }
 
             button {
-                width: 40px;
+                width: auto;
                 height: 100%;
                 background: var(--default-color);
                 cursor: pointer;
-
+                padding: 0px 20px;
+                font-size: 20px;
+                font-weight: 700;
+                color: #FFF;
+&:hover{
+    opacity: .8;
+}
+&:active{
+    transform: scale(.95)
+}
             }
         }
     }

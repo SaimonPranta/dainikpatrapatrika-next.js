@@ -1,10 +1,14 @@
 .header {
-    // position: relative;
+    // position: sticky !important;
+    // top: -35px;
+    // left: 0px;
+
     background: #FFF;
     padding-bottom: 8px;
     box-shadow: 1px 1px 7px #00000017,
         1px 1px 13px #0000000f,
         1px 1px 17px #0000000f;
+    z-index: 9999 !important;
 
     .top-section {
         background-color: #000;
@@ -155,6 +159,7 @@
     }
 
     .middle-container {
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -193,6 +198,7 @@
                     font-weight: 600;
                     padding: 5px 15px;
 
+                    &.active,
                     &:hover {
                         background: #eae5e5;
                         color: blue
