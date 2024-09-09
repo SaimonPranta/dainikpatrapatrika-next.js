@@ -197,11 +197,14 @@
                     font-size: 22px;
                     font-weight: 600;
                     padding: 5px 15px;
+                    border-bottom: 2px solid transparent ;
+
 
                     &.active,
                     &:hover {
                         background: #eae5e5;
-                        color: blue
+                        color: blue;
+                    border-bottom: 2px solid blue;
                     }
                 }
 
@@ -250,6 +253,7 @@
                             min-width: 100%;
                             width: auto;
                             box-sizing: border-box;
+
 
                             &:hover {
                                 background: #eae5e5;

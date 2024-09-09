@@ -1,24 +1,28 @@
 import React from 'react';
 import "./style.scss"
 import Image from 'next/image';
+import AdsOne from '@/assets/images/ads/3576327368700285170.jpeg'
+import AdsTwo from '@/assets/images/ads/7571834189285230854.jpeg'
+import AdsThree from '@/assets/images/ads/12236601381561371666.jpeg'
+import AdsFour from '@/assets/images/ads/Maggi facebook ad sample.jpeg'
 
 const ads = [{
-    img: "https://www.campuslive24.com/uploads/shares/ads/bactrol-2022-05-17-20-53-20.jpg",
+    img: AdsOne,
     link: "https://www.facebook.com"
 }, {
-    img: "https://campuslive24.com/public/photos/South+A+U+Add.gif",
+    img:AdsTwo,
     link: "https://www.facebook.com"
 }, {
-    img: "https://www.campuslive24.com/uploads/shares/ads/BHBFC-2022-05-17-21-05-58.jpg",
+    img: AdsThree,
     link: "https://www.facebook.com"
 }, {
-    img: "https://campuslive24.com/uploads/shares/dbbl-2016-11-07-10-54-27.jpg",
+    img: AdsFour,
     link: "https://www.facebook.com"
 }]
 const AdsList = () => {
     return (
         <div className='container ads-list'>
-            {[...ads].map((adsInfo, index) => {
+            {ads.map((adsInfo, index) => {
                 return <a href={adsInfo.link} key={index}>
                     <Image src={adsInfo.img} height={100} width={100} alt='' />
                 </a>

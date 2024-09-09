@@ -35,10 +35,23 @@ const getJobsNews = async () => {
         return []
     }
 }
+const getSlidingNews = async () => {
+    try {
+          
+        const response = await (await fetch(`${BACKEND_URL}/public/news/sort?sort=সর্বশেষ&page=1`)).json();
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
+    } catch (error) {
+        return []
+    }
+}
 
 const Index = async () => {
     const news = await getHeroNews()
     const jobsNews = await getJobsNews()
+    const slidingNews = await getSlidingNews()
 
     return (
         <div className='container hero-section'>
@@ -51,7 +64,7 @@ const Index = async () => {
                 <marquee>
                     <ul>
                         {
-                            [...news, ...jobsNews].map((newInfo, index) => {
+                            slidingNews.map((newInfo, index) => {
                                 return <li key={index}>
                                     <Link href={`/news/${newInfo._id}`} >
                                         {newInfo.title}

@@ -5,13 +5,17 @@ import Image from 'next/image';
 import { BACKEND_URL } from '@/shared/constants/ulrList';
 import textSlicer from '@/shared/functions/textSlicer';
 import getImageUrl from '@/shared/functions/getImageUrl';
+import AdsOne from '@/assets/images/ads/9816891373495023339.gif';
+import AdsTwo from '@/assets/images/ads/17843484186255185549.gif';
+import AdsThree from '@/assets/images/ads/12236601381561371666.jpeg';
+
 
 
 
 const adsList = [
-    { link: "https://facebook.com", img: "https://campuslive24.com/uploads/shares/output_zaq6Yp-2016-11-07-10-44-51.gif" },
-    { link: "https://facebook.com", img: "https://campuslive24.com/uploads/shares/IBN_SINA-2016-11-07-10-50-29.gif" },
-    { link: "https://facebook.com", img: "https://campuslive24.com/uploads/Janata%20Bank%20Online-AD-01.gif" },
+    { link: "https://facebook.com", img: AdsOne },
+    { link: "https://facebook.com", img: AdsTwo },
+    { link: "https://facebook.com", img: AdsThree },
 ]
 
 const getInternalNews = async () => {

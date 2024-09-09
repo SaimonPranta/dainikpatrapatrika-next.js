@@ -52,7 +52,7 @@ const NewsList = () => {
             resetTimeout()
         }
 
-    }, [page])
+    }, [page, currentNews])
 
     const handleScroll = () => {
         if (loading) {
