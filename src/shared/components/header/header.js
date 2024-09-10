@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BACKEND_URL } from "../../../shared/constants/ulrList";
 import NavItem from '@/shared/components/header/Modules/NavItem';
-import TopHeader from '@/shared/components/header/Modules/TopHeader';
+import TopHeader from '@/shared/components/header/Modules/TopHeader/Index';
 
 const getCategories = async () => {
     try {
