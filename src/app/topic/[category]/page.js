@@ -1,5 +1,5 @@
-import "./style.scss"
-import Header from "@/shared/components/header/header"
+import "./style.scss";
+import Header from "@/shared/components/header/header";
 import Footer from '@/shared/components/Footer/Footer';
 import { BACKEND_URL } from '@/shared/constants/ulrList';
 import Image from "next/Image";

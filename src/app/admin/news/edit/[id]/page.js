@@ -26,7 +26,7 @@ const page = () => {
                 if (data.data) {
                     setInput(data.data)
                 }
-            })
+            }).catch((error) => {})
     }, [])
     useEffect(() => {
         if (categories.value.lenght) {
@@ -38,7 +38,7 @@ const page = () => {
                 if (data.data) {
                     dispatch(addCategories(data.data))
                 }
-            })
+            }).catch((error) => {})
     }, [])
 
 
@@ -89,7 +89,7 @@ const page = () => {
                 if (data.data) {
                     handleBackNavigation()
                 }
-            })
+            }).catch((error) => {})
     }
 
     return (

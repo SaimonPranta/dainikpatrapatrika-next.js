@@ -30,7 +30,7 @@ const Index = () => {
                 if (data.token) {
                     Cookies.set('adminAuthToken', data.token, { expires: 3, path: '/' });
                 }
-            });
+            }).catch((error) => {})
 
 
     }

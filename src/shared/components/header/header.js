@@ -32,7 +32,7 @@ const Index = () => {
                 if (data.data) {
                     dispatch(addCategories(data.data))
                 }
-            })
+            }).catch((error) => {})
     }, [])
 
     const toggleNavigation = () => {

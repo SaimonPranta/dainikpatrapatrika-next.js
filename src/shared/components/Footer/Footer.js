@@ -1,9 +1,9 @@
 import React from 'react';
-import "./style.scss"
+import "./style.scss";
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from "@/assets/images/home/dainikpatropatrika.jpg"
+import logo from "@/assets/images/home/dainikpatropatrika.jpg";
 
 const socialList = [
     {

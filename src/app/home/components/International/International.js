@@ -1,5 +1,5 @@
 import React from 'react';
-import "./style.scss"
+import "./style.scss";
 import Link from 'next/link';
 import Image from 'next/image';
 import { BACKEND_URL } from '@/shared/constants/ulrList';

@@ -25,7 +25,7 @@ const Index = () => {
                 if (data.data) {
                     setCategories(data.data)
                 }
-            });
+            }).catch((error) => {})
     }, [])
 
     const handleAddCategoriesToggle = () => {
@@ -49,7 +49,7 @@ const Index = () => {
                 if (data.data) {
                     setCategories(data.data)
                 }
-            });
+            }).catch((error) => {})
     }
     const handleDeleteCategories = (mainID) => {
         fetch(`${BACKEND_URL}/admin/categories`, {
@@ -65,7 +65,7 @@ const Index = () => {
                 if (data.data) {
                     setCategories(data.data)
                 }
-            });
+            }).catch((error) => {})
     }
 
 

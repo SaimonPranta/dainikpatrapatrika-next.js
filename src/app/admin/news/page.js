@@ -46,7 +46,7 @@ const Index = () => {
                         }
 
                     }
-                })
+                }).catch((error) => {})
         }
 
         const timeTaskContainer = setTimeout(callApi, 0);
@@ -84,7 +84,7 @@ const Index = () => {
                     const newList = news.filter((item) => item._id !== id)
                     setNews(newList)
                 }
-            })
+            }).catch((error) => {})
     }
     const handleAddNewsNavigation = () => {
         router.push("/admin/news/add")

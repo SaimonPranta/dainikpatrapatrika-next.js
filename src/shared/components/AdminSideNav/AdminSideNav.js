@@ -1,5 +1,5 @@
 import React from 'react';
-import "./style.scss"
+import "./style.scss";
 import Link from 'next/link';
 
 const navList = [

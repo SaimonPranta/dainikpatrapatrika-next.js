@@ -1,8 +1,8 @@
 import React from 'react';
-import "./style.scss"
+import "./style.scss";
 import Link from 'next/link';
 import Image from 'next/image';
-import palyIcons from "../../../../assets/images/home/video-play-icon-11397.png"
+import palyIcons from "../../../../assets/images/home/video-play-icon-11397.png";
  
 
 const getVideos = async () => {

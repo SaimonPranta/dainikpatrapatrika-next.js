@@ -2,7 +2,7 @@
 import getImageUrl from '@/shared/functions/getImageUrl';
 import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
-import { BACKEND_URL } from "@/shared/constants/ulrList"
+import { BACKEND_URL } from "@/shared/constants/ulrList";
 import Link from 'next/link';
 
 

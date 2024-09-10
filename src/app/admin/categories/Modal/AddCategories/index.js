@@ -58,7 +58,7 @@ const Index = ({ close, setCategories, select, setSelect }) => {
 
                     close();
                 }
-            });
+            }).catch((error) => {})
     };
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./style.scss"
+import "./style.scss";
 import Image from 'next/image';
 import Link from 'next/Link';
 import getImageUrl from '@/shared/functions/getImageUrl';

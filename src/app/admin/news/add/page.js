@@ -27,7 +27,7 @@ const page = () => {
                 if (data.data) {
                     dispatch(addCategories(data.data))
                 }
-            })
+            }).catch((error) => {})
     }, [])
     const handleBackNavigation = () => {
         router.push("/admin/news")
@@ -74,7 +74,7 @@ const page = () => {
                 if (data.data) {
                     handleBackNavigation()
                 }
-            })
+            }).catch((error) => {})
     }
  
     return (
