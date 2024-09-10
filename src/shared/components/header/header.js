@@ -1,18 +1,18 @@
 "use client"
-import "./style.scss"
-import { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import "./style.scss";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import { IoIosSearch } from "react-icons/io";
 import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { BACKEND_URL } from "../../../shared/constants/ulrList"
-import { addCategories } from "../../../store/categories/reducer"
+import { BACKEND_URL } from "../../../shared/constants/ulrList";
+import { addCategories } from "../../../store/categories/reducer";
 import { TiThMenu } from "react-icons/ti";
 import { useRouter } from 'next/navigation';
 import { FaSearch } from "react-icons/fa";
-import logo from "@/assets/images/home/dainikpatropatrika.jpg"
-import { usePathname } from 'next/navigation'
+import logo from "@/assets/images/home/dainikpatropatrika.jpg";
+import { usePathname } from 'next/navigation';
 
 const Index = () => {
     const [search, setSearch] = useState("")
