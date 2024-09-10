@@ -12,17 +12,23 @@
 
             .categories-container {
                 display: flex;
-                align-items: center;
+                align-items: center !important;
                 color: #000;
                 font-size: 20px;
 
                 a {
                     text-decoration: none;
+
                 }
 
                 span {
                     height: 22px;
                     width: 22px;
+                    // background-color: red;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 4px;
+
                 }
 
             }
@@ -43,20 +49,24 @@
                         font-size: 28px;
 
                     }
+
                     .share-container {
                         position: relative;
                         display: flex;
                         align-items: center;
                         gap: 15px;
-                        button{
+
+                        button {
                             padding: 5px;
                             border-radious: 4px;
                             cursor: pointer;
+
                             svg {
                                 height: 25px;
                                 width: 25px;
                             }
                         }
+
                         // .share-modal{
                         //     position: relative;
                         // }
@@ -148,7 +158,14 @@
 
                     a {
                         text-decoration: none;
+                        display: flex !important;
+                        align-items: center;
+
+                        svg {
+                            margin-bottom: 4px;
+                        }
                     }
+
 
                     span,
                     svg {
@@ -350,5 +367,3 @@
         }
     }
 }
-
-
