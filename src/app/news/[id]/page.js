@@ -3,13 +3,13 @@ import { BACKEND_URL } from '@/shared/constants/ulrList';
 import Link from "next/Link";
 import { FaHome } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import Header from "@/shared/components/header/header"
-import Image from "next/Image"
+import Header from "@/shared/components/header/header";
+import Image from "next/Image";
 import getImageUrl from '@/shared/functions/getImageUrl';
 import convertedToBanglaDate from '@/shared/functions/convertedToBanglaDate';
 import { WiTime8 } from "react-icons/wi";
-import textSlicer from "@/shared/functions/textSlicer"
-import TodaysNews from "@/shared/components/TodaysNews/TodaysNews"
+import textSlicer from "@/shared/functions/textSlicer";
+import TodaysNews from "@/shared/components/TodaysNews/TodaysNews";
 import Footer from '@/shared/components/Footer/Footer';
 import Share from "./modal/Share/Share"
 import { RiShareLine } from "react-icons/ri";
