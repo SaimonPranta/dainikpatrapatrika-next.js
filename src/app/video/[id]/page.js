@@ -1,6 +1,6 @@
 import "./style.scss";
 import { BACKEND_URL } from '@/shared/constants/ulrList';
-import Link from "next/Link"
+import Link from "next/Link";
 import { FaHome } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Header from "@/shared/components/header/header"
