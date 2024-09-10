@@ -11,7 +11,7 @@ import { WiTime8 } from "react-icons/wi";
 import textSlicer from "@/shared/functions/textSlicer";
 import TodaysNews from "@/shared/components/TodaysNews/TodaysNews";
 import Footer from '@/shared/components/Footer/Footer';
-import Share from "@/Share/Share"
+// import Share from "@/Share/Share"
 import { RiShareLine } from "react-icons/ri";
 import { GrPrint } from "react-icons/gr";
 
@@ -90,7 +90,7 @@ const Index = async ({ params: { id } }) => {
                                     </button>    
                                     <Share/>   
                                 </div> */}
-                                <Share />
+                                {/* <Share /> */}
 
                             </div>
 
