@@ -13,6 +13,18 @@ const nextConfig = {
                 pathname: "/**"
             },
             {
+                protocol: "http",
+                hostname: "server.dainikpatrapatrika.com",
+                port: "",
+                pathname: "/**"
+            },
+            {
+                protocol: "https",
+                hostname: "server.dainikpatrapatrika.com",
+                port: "",
+                pathname: "/**"
+            },
+            {
                 protocol: "https",
                 hostname: "i.ytimg.com",
                 port: "",
