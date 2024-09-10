@@ -7,6 +7,7 @@ import { TiThMenu } from "react-icons/ti";
 import { useRouter } from 'next/navigation';
 import { FaSearch } from "react-icons/fa";
 import logo from "@/assets/images/home/dainikpatropatrika.jpg";
+import getBengaliDate from "@/shared/functions/getBanglaDate";
 
 
 const Index = () => {
@@ -39,7 +40,7 @@ const Index = () => {
             <div className="top-section">
                 <div className="top-inner-container container">
                     <div className="left">
-                        <p>ঢাকা | শনিবার, ২রা মার্চ ২০২৪, ১৯শে ফাল্গুন ১৪৩০</p>
+                        <p>{`ঢাকা | ${getBengaliDate()}`}</p>
                     </div>
                     <div className="right">
                         <div>

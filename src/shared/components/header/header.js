@@ -1,13 +1,8 @@
 
-import "./style.scss";
-import Image from "next/image";
-import { IoIosSearch } from "react-icons/io";
+import "./style.scss"; 
 import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BACKEND_URL } from "../../../shared/constants/ulrList";
-import { TiThMenu } from "react-icons/ti";
-import logo from "@/assets/images/home/dainikpatropatrika.jpg";
-import { headers } from "next/headers";
 import NavItem from '@/shared/components/header/Modules/NavItem';
 import TopHeader from '@/shared/components/header/Modules/TopHeader';
 
@@ -26,7 +21,6 @@ const getCategories = async () => {
 } 
 
 const Index = async () => { 
-    const headersList = headers(); 
     const categories = await getCategories()
 
     // useEffect(() => {
