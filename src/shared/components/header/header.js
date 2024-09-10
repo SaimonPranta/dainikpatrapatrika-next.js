@@ -49,7 +49,7 @@ const Index = async () => {
                         <NavItem currentPath="/"  currentLabel="প্রচ্ছদ" />
                     </li>
                     {
-                        categories?.length > 0 && categories.map((routeInfo, index) => {
+                        categories?.length > 0 && [...categories].slice(0, 8).map((routeInfo, index) => {
                             return <li key={routeInfo._id}>
                                 <NavItem currentPath={`/topic/${routeInfo.route}`}  currentLabel={routeInfo.label} />
                                 {
