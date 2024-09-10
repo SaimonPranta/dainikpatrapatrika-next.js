@@ -67,14 +67,14 @@ const Index = async ({ params: { id } }) => {
                             <span>
                                 <MdKeyboardArrowRight />
                             </span>
-                            {newsDetails.category && <Link href={`/news/${newsDetails.categoriesRoute}`} >
+                            {newsDetails.category && <Link href={`/topic/${newsDetails.categoriesRoute}`} >
                                 <p>{newsDetails.category}</p>
                             </Link>}
                             {newsDetails.subcategory && <>
                                 <span>
                                     <MdKeyboardArrowRight />
                                 </span>
-                                <Link href={`/news/${newsDetails.subCategoriesRoute}`} >
+                                <Link href={`/topic/${newsDetails.categoriesRoute}?subCategory=${newsDetails.subCategoriesRoute}`} >
                                     <p>{newsDetails.subcategory}</p>
                                 </Link>
                             </>}
