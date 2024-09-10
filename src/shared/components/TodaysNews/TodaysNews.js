@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.scss";
 import Image from 'next/image';
-import Link from 'next/ink';
+import Link from 'next/link';
 import getImageUrl from '@/shared/functions/getImageUrl';
 import { BACKEND_URL } from '@/shared/constants/ulrList';
 import textSlicer from '@/shared/functions/textSlicer';
