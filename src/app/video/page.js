@@ -1,10 +1,10 @@
 import "./style.scss";
 import { BACKEND_URL } from '@/shared/constants/ulrList';
-import Link from "next/Link";
+import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import Header from "@/shared/components/header/header";
-import Image from "next/Image";
+import Image from "next/image";
 import Footer from '@/shared/components/Footer/Footer';
 import palyIcons from "../../assets/images/home/video-play-icon-11397.png"
 import textSlicer from "@/shared/functions/textSlicer";

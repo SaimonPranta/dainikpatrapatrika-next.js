@@ -2,7 +2,7 @@ import "./style.scss";
 import Header from "@/shared/components/header/header";
 import Footer from '@/shared/components/Footer/Footer';
 import { BACKEND_URL } from '@/shared/constants/ulrList';
-import Image from "next/Image";
+import Image from "next/image";
 import Link from 'next/link';
 import getImageUrl from '@/shared/functions/getImageUrl';
 import textSlicer from "@/shared/functions/textSlicer";

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import Link from "next/Link"
+import Link from "next/link";
 import "./style.scss"
 import AdminLayouts from '@/shared/layouts/AdminLayouts/AdminLayouts';
 import textSlicer from '@/shared/functions/textSlicer';
