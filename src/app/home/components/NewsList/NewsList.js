@@ -26,7 +26,7 @@ const NewsList = () => {
         resetTimeout()
 
         debounceState.current = setTimeout(() => {
-            fetch(`${BACKEND_URL}/public/news/sort?sort=${currentNews}&page=${page}`)
+            fetch(`${BACKEND_URL}/public/news/sort?sort=${currentNews}&page=${page}`, { 'cache': 'no-store'})
                 .then(res => res.json())
                 .then(data => {
                     if (data.data) {

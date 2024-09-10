@@ -166,7 +166,7 @@ header .close:hover {
     width: 50px;
     font-size: 18px;
     text-align: center;
-    color: #757171; 
+    color: #757171;
 }
 
 .field.active i {
@@ -192,4 +192,44 @@ header .close:hover {
 
 .field button:hover {
     background: #8d39fa;
+}
+
+@media only screen and (min-width:200px) and (max-width:600px) {
+
+    .share-modal {
+        padding: 15px;
+        border-radius: 12px;
+        min-width: 250px;
+        max-width: 250px !important;
+        width: 250px !important;
+
+        header {
+            span {
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+
+        }
+
+        .content {
+            margin: 10px 0px 15px 0px !important;
+        }
+
+        .content .icons  {
+            padding: 0px 20px  !important;
+        }
+        .content .icons a {
+            height: 35px;
+            width: 35px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .content .field {
+            height: 35px; 
+            input{
+                font-size: 13px;
+            }
+        }
+    }
 }

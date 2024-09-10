@@ -10,7 +10,7 @@ import textSlicer from "@/shared/functions/textSlicer";
 
 const getCategory = async (category, subCategory) => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/categories/${category}?subCategory=${subCategory}`)).json()
+        const response = await (await fetch(`${BACKEND_URL}/public/categories/${category}?subCategory=${subCategory}`, { 'cache': 'no-store',})).json()
         if (response.data) {
             return response.data
         }
@@ -21,7 +21,7 @@ const getCategory = async (category, subCategory) => {
 }
 const getNews = async (categoryLabel, subCategoryLabel) => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${12}&category=${categoryLabel}&subcategory=${subCategoryLabel}`, { next: { revalidate: 300 } })).json();
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${12}&category=${categoryLabel}&subcategory=${subCategoryLabel}`, {  'cache': 'no-store', })).json();
 
 
         if (response.data?.length) {

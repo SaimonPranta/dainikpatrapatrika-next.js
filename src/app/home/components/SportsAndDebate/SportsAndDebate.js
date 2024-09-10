@@ -9,7 +9,7 @@ import textSlicer from '@/shared/functions/textSlicer';
  
 const getSportsNews = async () => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${7}&category=খেলা`)).json();
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${7}&category=খেলা`, { 'cache': 'no-store',})).json();
         if (response.data?.length) {
             return response.data
         }
@@ -20,7 +20,7 @@ const getSportsNews = async () => {
 }
 const getDebatesNews = async () => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${5}&category=খেলা`)).json();
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${5}&category=খেলা`, { 'cache': 'no-store',})).json();
         if (response.data?.length) {
             return response.data
         }

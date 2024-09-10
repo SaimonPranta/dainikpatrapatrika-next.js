@@ -23,7 +23,7 @@ const adsContainer = [
 const getVideoDetails = async (id) => {
     try {
         // let response = await (await fetch(`${BACKEND_URL}/public/news/${id}`)).json()
-        let response = await (await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`)).json() 
+        let response = await (await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`, { 'cache': 'no-store',})).json() 
         if (response?.items[0]?.snippet) {
             return response?.items[0]?.snippet
         }
@@ -34,7 +34,7 @@ const getVideoDetails = async (id) => {
 }
 const getNewsList = async () => {
     try {
-        let response = await (await fetch(`${BACKEND_URL}/public/news`)).json()
+        let response = await (await fetch(`${BACKEND_URL}/public/news`, { 'cache': 'no-store',})).json()
 
         if (response.data.length) {
             return response.data

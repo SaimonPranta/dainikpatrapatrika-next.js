@@ -19,13 +19,15 @@ const Index = () => {
     })
 
     useEffect(() => {
-        fetch(`${BACKEND_URL}/admin/categories`)
+        fetch(`${BACKEND_URL}/admin/categories`, {
+            'cache': 'no-store',
+        })
             .then((res) => res.json())
             .then((data) => {
                 if (data.data) {
                     setCategories(data.data)
                 }
-            }).catch((error) => {})
+            }).catch((error) => { })
     }, [])
 
     const handleAddCategoriesToggle = () => {
@@ -38,6 +40,7 @@ const Index = () => {
     const handleDeleteSubCategories = (mainID, subID) => {
         fetch(`${BACKEND_URL}/admin/categories/subcategories`, {
             method: "DELETE",
+            'cache': 'no-store',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
                 // authorization: `Bearer ${getCookie()}`,
@@ -49,11 +52,12 @@ const Index = () => {
                 if (data.data) {
                     setCategories(data.data)
                 }
-            }).catch((error) => {})
+            }).catch((error) => { })
     }
     const handleDeleteCategories = (mainID) => {
         fetch(`${BACKEND_URL}/admin/categories`, {
             method: "DELETE",
+            'cache': 'no-store',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
                 // authorization: `Bearer ${getCookie()}`,
@@ -65,7 +69,7 @@ const Index = () => {
                 if (data.data) {
                     setCategories(data.data)
                 }
-            }).catch((error) => {})
+            }).catch((error) => { })
     }
 
 
@@ -102,7 +106,7 @@ const Index = () => {
                                             {
                                                 item.subCategories.map((subCate, subIndex) => {
                                                     return <li key={subCate._id}>
-                                                        {subCate.label} 
+                                                        {subCate.label}
 
                                                         <span onClick={() => handleDeleteSubCategories(item._id, subCate._id)}><RiDeleteBin5Line /></span>
                                                     </li>

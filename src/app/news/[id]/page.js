@@ -26,9 +26,7 @@ const adsContainer = [
 const getNews = async (id) => {
     try {
         let response = await (await fetch(`${BACKEND_URL}/public/news/${id}`, {
-            headers: {
-                'Cache-Control': 'no-cache', // Disable caching
-            }
+            'cache': 'no-store',
         })).json()
         if (response.data._id) {
             return response.data
@@ -40,7 +38,7 @@ const getNews = async (id) => {
 }
 const getNewsList = async () => {
     try {
-        let response = await (await fetch(`${BACKEND_URL}/public/news`)).json()
+        let response = await (await fetch(`${BACKEND_URL}/public/news`, { 'cache': 'no-store',})).json()
 
         if (response.data.length) {
             return response.data

@@ -10,7 +10,7 @@ import textSlicer from '@/shared/functions/textSlicer';
 
 const getNews = async (id) => {
     try {
-        let response = await (await fetch(`${BACKEND_URL}/public/news?limit=6`)).json()
+        let response = await (await fetch(`${BACKEND_URL}/public/news?limit=6`,{ 'cache': 'no-store',})).json()
 
         if (response.data.length) {
             return response.data

@@ -10,9 +10,7 @@ import NewsList from '../NewsList/NewsList';
 const getHeroNews = async () => {
     try {
         const response = await (await fetch(`${BACKEND_URL}/public/news?limit={10}`, {
-            headers: {
-                'Cache-Control': 'no-cache', // Disable caching
-            }
+            'cache': 'no-store',
         })).json();
         if (response.data?.length) {
             return response.data
@@ -26,7 +24,9 @@ const getHeroNews = async () => {
 }
 const getJobsNews = async () => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${1}&category=চাকরি বাজার`)).json();
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${1}&category=চাকরি বাজার`, {
+            'cache': 'no-store',
+        })).json();
         if (response.data?.length) {
             return response.data
         }
@@ -37,8 +37,10 @@ const getJobsNews = async () => {
 }
 const getSlidingNews = async () => {
     try {
-          
-        const response = await (await fetch(`${BACKEND_URL}/public/news/sort?sort=সর্বশেষ&page=1`)).json();
+
+        const response = await (await fetch(`${BACKEND_URL}/public/news/sort?sort=সর্বশেষ&page=1`, {
+            'cache': 'no-store',
+        })).json();
         if (response.data?.length) {
             return response.data
         }
@@ -58,7 +60,7 @@ const Index = async () => {
             <div className='top-section'>
                 <div className='left'>
                     <p>
-                        BGIC সর্বশেষ:
+                         সর্বশেষ:
                     </p>
                 </div>
                 <marquee>
@@ -83,7 +85,7 @@ const Index = async () => {
                                 <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
                                 <h2>{newsInfo.title}</h2>
                                 <p>{newsInfo?.description?.substring(0, 160)}</p>
-                            </Link> 
+                            </Link>
                         })
                     }
                 </div>

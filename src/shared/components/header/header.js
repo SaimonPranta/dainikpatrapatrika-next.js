@@ -4,11 +4,12 @@ import Link from "next/link";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BACKEND_URL } from "../../../shared/constants/ulrList";
 import NavItem from '@/shared/components/header/Modules/NavItem';
+import SubCategory from '@/shared/components/header/Modules/SubCategory';
 import TopHeader from '@/shared/components/header/Modules/TopHeader/Index';
 
 const getCategories = async () => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/categories`)).json();
+        const response = await (await fetch(`${BACKEND_URL}/public/categories`, { 'cache': 'no-store'})).json();
 
         if (response.data?.length) {
             return response.data
@@ -53,17 +54,7 @@ const Index = async () => {
                                 <NavItem currentPath={`/topic/${routeInfo.route}`}  currentLabel={routeInfo.label} />
                                 {
                                     routeInfo?.subCategories?.length > 0 && <>
-                                        <button> <MdOutlineKeyboardArrowDown /> </button>
-                                        <ul>
-                                            {
-                                                routeInfo?.subCategories.map((subRouteInfo, subIndex) => {
-                                                    return <li key={subRouteInfo._id} >
-                                                        <Link href={`/topic/${routeInfo.route}?subCategory=${subRouteInfo.route}`} >
-                                                            {subRouteInfo.label}
-                                                        </Link> </li>
-                                                })
-                                            }
-                                        </ul>
+                                    <SubCategory subCategories={routeInfo?.subCategories} routeInfo={routeInfo}/>
                                     </>
                                 }
                             </li>

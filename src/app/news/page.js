@@ -12,7 +12,7 @@ import getImageUrl from "@/shared/functions/getImageUrl";
 
 const getNews = async (search) => {
     try {
-        const response = await (await fetch(`${BACKEND_URL}/public/news?search=${search}`)).json();
+        const response = await (await fetch(`${BACKEND_URL}/public/news?search=${search}`, { 'cache': 'no-store',})).json();
         if (response.data?.length) {
             return response.data
         }

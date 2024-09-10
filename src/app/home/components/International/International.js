@@ -19,9 +19,9 @@ const adsList = [
 ]
 
 const getInternalNews = async () => {
-    try {
-        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${3}&category=আন্তর্জাতিক`)).json();
-      
+    try { 
+        const response = await (await fetch(`${BACKEND_URL}/public/news?limit=${3}&category=আন্তর্জাতিক`, { 'cache': 'no-store'})).json();
+
         if (response.data?.length) {
             return response.data
         }
@@ -42,7 +42,7 @@ const International = async () => {
             <div className='bottom-container'>
                 <div className='news-container'>
                     {internationalNews.map((newsInfo, index) => {
-                        return <Link key={index}  href={`/news/${newsInfo._id}`}   >
+                        return <Link key={index} href={`/news/${newsInfo._id}`}   >
                             <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
                             <h2>{newsInfo.title}</h2>
                             <p>{textSlicer(newsInfo.description, 160, true)}</p>
@@ -53,7 +53,7 @@ const International = async () => {
                 <div className='ads-section'>
                     {
                         [...adsList].map((newsInfo, index) => {
-                            return <Link  href={`/news/${newsInfo._id}`}  key={index} >
+                            return <Link href={`/news/${newsInfo._id}`} key={index} >
                                 <Image src={newsInfo.img} height={100} width={100} alt='' />
                             </Link>
                         })
