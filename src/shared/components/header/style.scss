@@ -392,9 +392,11 @@
             left: 101%;
             transition: 0.5s ease-in, 0.5s ease-out;
             z-index: 999;
+            display: none;
 
             &.active {
                 left: 0px;
+                display: inline-block;
             }
 
             ul {
