@@ -5,7 +5,6 @@ import { BACKEND_URL } from '@/shared/constants/ulrList';
 export const middleware = async (request) => {
 
     try {
-        console.log("request ==>>", request.nextUrl.pathname)
         const token = await request.cookies.get("adminAuthToken")?.value || null
         if (!token) {
 
@@ -23,7 +22,6 @@ export const middleware = async (request) => {
         }
 
         const data = await res.json();
-        console.log("Response data ======>>>>", data);
         if (request.nextUrl.pathname === "/admin/signin") {
             if (data.verified) {
                 return NextResponse.redirect(new URL('/admin/news', request.url))
@@ -39,7 +37,6 @@ export const middleware = async (request) => {
     } catch (error) {
         console.error("Error in middleware ==>", error);
     }
-    console.log("Hello world ====>>")
     return NextResponse.redirect(new URL('/admin/signin', request.url))
 
 };

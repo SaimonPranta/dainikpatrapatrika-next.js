@@ -7,7 +7,7 @@ import textSlicer from '@/shared/functions/textSlicer';
 import { BACKEND_URL } from "@/shared/constants/ulrList"
 import getImageUrl from '@/shared/functions/getImageUrl';
 import { useRouter } from 'next/navigation';
-import { FaSearch } from "react-icons/fa";
+import Image from 'next/image';
 import { IoSearch } from "react-icons/io5";
 
 const Index = () => {
@@ -114,7 +114,7 @@ const Index = () => {
                         {
                             news.map((news, index) => {
                                 return <div key={index} className="new-cart">
-                                    <Link href="" className="image-container"> <img src={getImageUrl(news.img)} alt="" /> </Link>
+                                    <Link href="" className="image-container"> <Image height={100} width={100} alt=''  src={getImageUrl(news.img)}   /> </Link>
                                     <div>
 
                                         <Link href={`/news/${news._id}`} className="des-container">

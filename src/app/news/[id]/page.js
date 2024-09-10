@@ -27,7 +27,7 @@ const getNews = async (id) => {
     try {
         let response = await (await fetch(`${BACKEND_URL}/public/news/${id}`, {
             headers: {
-                // 'Cache-Control': 'no-cache', // Disable caching
+                'Cache-Control': 'no-cache', // Disable caching
             }
         })).json()
         if (response.data._id) {
@@ -52,8 +52,7 @@ const getNewsList = async () => {
 }
 const Index = async ({ params: { id } }) => {
     const newsDetails = await getNews(id)
-    const newsList = await getNewsList()
-
+    const newsList = await getNewsList() 
     return (
         <>
             <Header />
@@ -97,7 +96,7 @@ const Index = async ({ params: { id } }) => {
 
                             <Image src={getImageUrl(newsDetails.img)} height="100" width="100" alt="" />
                             <p>{newsDetails.description}</p>
-                            <div> <WiTime8 /> <p>প্রকাশিত: {convertedToBanglaDate(newsDetails.createdAt)}</p></div>
+                            {newsDetails?.createdAt && <div> <WiTime8 /> <p>প্রকাশিত: {convertedToBanglaDate(newsDetails.createdAt)}</p></div>}
 
                         </div>
                     </div>

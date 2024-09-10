@@ -10,7 +10,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 
 
-const page = () => {
+const Page = () => {
     const [input, setInput] = useState({})
     const [subcategories, setSubcategories] = useState([])
     const { categories } = useSelector(state => state)
@@ -141,4 +141,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
