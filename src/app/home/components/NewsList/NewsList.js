@@ -41,6 +41,7 @@ const NewsList = () => {
                         setTotal(Number(data.total))
                     }
                 })
+                .catch((error) => { })
                 .finally(() => {
                     setLoading(false)
 
@@ -58,8 +59,8 @@ const NewsList = () => {
         if (loading) {
             return
         }
-        if(total && total <= newsList.length){
-            return 
+        if (total && total <= newsList.length) {
+            return
         }
         const container = document.getElementById("news-list")
         const scrollTop = container?.scrollTop || 0
