@@ -36,9 +36,7 @@ const Index = () => {
     }
     const handleChange = (e) => {
         const name = e.target.name
-        const value = e.target.value
-        console.log("name ==>>", name)
-        console.log("value ==>>", value)
+        const value = e.target.value 
 
         setInput((state) => {
             return {
