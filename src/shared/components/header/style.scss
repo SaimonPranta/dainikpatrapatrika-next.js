@@ -9,6 +9,7 @@
         1px 1px 13px #0000000f,
         1px 1px 17px #0000000f;
     z-index: 9999 !important;
+    width: 100vw !important;
     max-width: 100vw !important;
     overflow-x: hidden;
 
@@ -273,6 +274,7 @@
 
 @media only screen and (min-width:200px) and (max-width:1300px) {
     .header {
+        
         .middle-container {
             .logo-container {
                 display: flex;
@@ -316,6 +318,8 @@
 
 @media only screen and (min-width:200px) and (max-width:1000px) {
     .header {
+        width: 100vw !important;
+        max-width: 100vw !important;
         .top-section {
             .top-inner-container {
                 .left {
