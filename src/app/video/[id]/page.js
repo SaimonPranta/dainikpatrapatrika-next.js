@@ -12,18 +12,16 @@ import textSlicer from "@/shared/functions/textSlicer";
 import TodaysVideos from "@/shared/components/TodaysVideos/TodaysVideos"
 import Footer from '@/shared/components/Footer/Footer';
 
-
 const adsContainer = [
     "https://tpc.googlesyndication.com/simgad/9816891373495023339",
     "https://tpc.googlesyndication.com/simgad/9816891373495023339"
 ]
 
-
+ 
 
 const getVideoDetails = async (id) => {
     try {
-        // let response = await (await fetch(`${BACKEND_URL}/public/news/${id}`)).json()
-        let response = await (await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`, { 'cache': 'no-store',})).json() 
+        let response = await (await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`, { 'cache': 'no-store', })).json()
         if (response?.items[0]?.snippet) {
             return response?.items[0]?.snippet
         }
@@ -34,14 +32,29 @@ const getVideoDetails = async (id) => {
 }
 const getNewsList = async () => {
     try {
-        let response = await (await fetch(`${BACKEND_URL}/public/news`, { 'cache': 'no-store',})).json()
+        let response = await (await fetch(`${BACKEND_URL}/public/news`, { 'cache': 'no-store', })).json()
 
         if (response.data.length) {
             return response.data
         }
-        return {}
+        return []
     } catch (error) {
-        return {}
+        return []
+    }
+}
+
+export const generateMetadata = async ({ params, searchParams }, parent) => {
+    const id = params.id
+    const videoDetails = await getVideoDetails(id)
+    const previousImages = (await parent).openGraph?.images || []
+    const currentImg = videoDetails?.thumbnails?.medium
+
+    return {
+        title: videoDetails.title,
+        description: videoDetails.description,
+        openGraph: {
+            images: [currentImg, ...previousImages],
+        },
     }
 }
 

@@ -12,6 +12,7 @@ import textSlicer from "@/shared/functions/textSlicer";
 import TodaysNews from "@/shared/components/TodaysNews/TodaysNews";
 import Footer from '@/shared/components/Footer/Footer';
 import Share from "@/app/news/[id]/Modal/Share/Share"
+import MetaHead from '@/shared/components/MetaHead'
 
 
 
@@ -20,7 +21,23 @@ const adsContainer = [
     "https://tpc.googlesyndication.com/simgad/9816891373495023339"
 ]
 
-
+export async function generateMetadata({ params, searchParams }, parent) {
+    // read route params
+    const id = params.id
+   
+    // fetch data
+    // const product = await fetch(`https://.../${id}`).then((res) => res.json())
+   
+    // optionally access and extend (rather than replace) parent metadata
+    // const previousImages = (await parent).openGraph?.images || []
+   
+    return {
+      title: "Hello world",
+    //   openGraph: {
+    //     images: ['/some-specific-page-image.jpg', ...previousImages],
+    //   },
+    }
+  }
 
 const getNews = async (id) => {
     try {
@@ -35,7 +52,6 @@ const getNews = async (id) => {
         return {}
     }
 }
-
 const getNewsList = async () => {
     try {
         let response = await (await fetch(`${BACKEND_URL}/public/news`, { 'cache': 'no-store', })).json()
@@ -48,26 +64,12 @@ const getNewsList = async () => {
         return {}
     }
 }
-export const generateMetadata = async ({ params, searchParams }, parent) => {
-    const id = params.id
-    const newsDetails = await getNews(id)
-    const previousImages = (await parent).openGraph?.images || []
-    const currentImg = getImageUrl(newsDetails?.img)
-
-    return {
-        title: newsDetails?.title,
-        description: newsDetails?.description,
-        openGraph: {
-            images: [currentImg, ...previousImages],
-        },
-    }
-}
 const Index = async ({ params: { id } }) => {
-
     const newsDetails = await getNews(id)
     const newsList = await getNewsList()
     return (
         <>
+            <MetaHead title={newsDetails.title} description={newsDetails.description} image={getImageUrl(newsDetails.img)}/>
             <Header />
             <div className="container news-details-container">
                 <div className=' news-details'>
