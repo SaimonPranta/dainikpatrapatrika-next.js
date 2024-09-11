@@ -47,7 +47,8 @@ export const generateMetadata = async ({ params, searchParams }, parent) => {
     const id = params.id
     const videoDetails = await getVideoDetails(id)
     const previousImages = (await parent).openGraph?.images || []
-    const currentImg = videoDetails?.thumbnails?.medium
+    console.log("videoDetails?.thumbnails?.medium", videoDetails?.thumbnails?.medium)
+    const currentImg = videoDetails?.thumbnails?.medium?.url
 
     return {
         title: videoDetails.title,
