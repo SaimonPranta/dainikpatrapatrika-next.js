@@ -12,8 +12,8 @@ const navList = [
         path: "/admin/news"
     },
     {
-        label: "Categories",
-        path: "/admin/categories"
+        label: "Ads",
+        path: "/admin/ads"
     },
 ]
 

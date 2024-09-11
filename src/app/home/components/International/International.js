@@ -4,19 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BACKEND_URL } from '@/shared/constants/ulrList';
 import textSlicer from '@/shared/functions/textSlicer';
-import getImageUrl from '@/shared/functions/getImageUrl';
-import AdsOne from '@/assets/images/ads/9816891373495023339.gif';
-import AdsTwo from '@/assets/images/ads/17843484186255185549.gif';
-import AdsThree from '@/assets/images/ads/12236601381561371666.jpeg';
-
-
-
-
-const adsList = [
-    { link: "https://facebook.com", img: AdsOne },
-    { link: "https://facebook.com", img: AdsTwo },
-    { link: "https://facebook.com", img: AdsThree },
-]
+import getImageUrl from '@/shared/functions/getImageUrl'; 
+ 
 
 const getInternalNews = async () => {
     try { 
@@ -31,9 +20,23 @@ const getInternalNews = async () => {
     }
 
 }
+const getAds = async () => {
+    try { 
+        const response = await (await fetch(`${BACKEND_URL}/admin/ads?page=1`, { 'cache': 'no-store'})).json();
+
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
+    } catch (error) {
+        return []
+    }
+
+}
 const International = async () => {
     const internationalNews = await getInternalNews();
-
+    const adsList = await getAds();
+    
     return (
         <div className='container international-container'>
             <div className='title'>
@@ -52,9 +55,9 @@ const International = async () => {
                 </div>
                 <div className='ads-section'>
                     {
-                        [...adsList].map((newsInfo, index) => {
-                            return <Link href={`/news/${newsInfo._id}`} key={index} >
-                                <Image src={newsInfo.img} height={100} width={100} alt='' />
+                        adsList.slice(4, 7).map((newsInfo, index) => {
+                            return <Link href={newsInfo.targetLink} key={index} >
+                                <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
                             </Link>
                         })
                     }

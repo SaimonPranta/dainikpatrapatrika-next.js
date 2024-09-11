@@ -15,12 +15,21 @@ import Share from "@/app/news/[id]/Modal/Share/Share"
 
 
 
-const adsContainer = [
-    "https://tpc.googlesyndication.com/simgad/9816891373495023339",
-    "https://tpc.googlesyndication.com/simgad/9816891373495023339"
-]
+ 
 
+const getAds = async () => {
+    try { 
+        const response = await (await fetch(`${BACKEND_URL}/admin/ads?page=1`, { 'cache': 'no-store'})).json();
 
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
+    } catch (error) {
+        return []
+    }
+
+}
 
 const getNews = async (id) => {
     try {
@@ -66,6 +75,10 @@ const Index = async ({ params: { id } }) => {
 
     const newsDetails = await getNews(id)
     const newsList = await getNewsList()
+    const adsList = await getAds()
+
+
+
     return (
         <>
             <Header />
@@ -116,9 +129,9 @@ const Index = async ({ params: { id } }) => {
                     <div className="related-news-container">
                         <div className="ads-section">
                             {
-                                [...adsContainer].map((img, index) => {
-                                    return <Link href="/" key={index} >
-                                        <Image src={img} height={100} width={100} alt="" />
+                                adsList.slice(7, 9).map((adsInfo, index) => {
+                                    return <Link href={adsInfo.targetLink} key={index} >
+                                        <Image src={getImageUrl(adsInfo.img)} height={100} width={100} alt="" />
                                     </Link>
                                 })
                             }

@@ -3,11 +3,11 @@ import "./style.scss";
 import Link from 'next/link';
 import Image from 'next/image';
 import palyIcons from "../../../../assets/images/home/video-play-icon-11397.png";
- 
+
 
 const getVideos = async () => {
     try {
-        let response = await (await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=UUewt9x2hSiEn1rhlrBMuz1A&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`)).json()
+        let response = await (await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=UUewt9x2hSiEn1rhlrBMuz1A&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`, { 'cache': 'no-store' })).json()
         if (response.items) {
             return response.items
         }
@@ -31,9 +31,9 @@ const VideoGallery = async () => {
                 </div>
                 <div className="video-section" >
                     {
-                        [...vidList].map((news, index) => {
+                        vidList.map((news, index) => {
                             return <Link className='news-cart' href={`/video/${news?.snippet?.resourceId?.videoId}`} key={index} >
-                                <Image src={news?.snippet?.thumbnails?.default?.url} alt='' height={100} width={100} />
+                                <Image src={news?.snippet?.thumbnails?.maxres?.url} alt='' height={100} width={100} />
                                 <h2>{news?.snippet?.title}</h2>
                                 <Image className='paly-icon' src={palyIcons} alt='' height={100} width={100} />
                             </Link>

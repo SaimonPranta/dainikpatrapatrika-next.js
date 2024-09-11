@@ -1,30 +1,32 @@
 import React from 'react';
 import "./style.scss"
 import Image from 'next/image';
-import AdsOne from '@/assets/images/ads/3576327368700285170.jpeg'
-import AdsTwo from '@/assets/images/ads/7571834189285230854.jpeg'
-import AdsThree from '@/assets/images/ads/12236601381561371666.jpeg'
-import AdsFour from '@/assets/images/ads/Maggi facebook ad sample.jpeg'
+import getImageUrl from '@/shared/functions/getImageUrl';
+import { BACKEND_URL } from '@/shared/constants/ulrList';
 
-const ads = [{
-    img: AdsOne,
-    link: "https://www.facebook.com"
-}, {
-    img:AdsTwo,
-    link: "https://www.facebook.com"
-}, {
-    img: AdsThree,
-    link: "https://www.facebook.com"
-}, {
-    img: AdsFour,
-    link: "https://www.facebook.com"
-}]
-const AdsList = () => {
+ 
+
+const getAds = async () => {
+    try { 
+        const response = await (await fetch(`${BACKEND_URL}/admin/ads?page=1`, { 'cache': 'no-store'})).json();
+
+        if (response.data?.length) {
+            return response.data
+        }
+        return []
+    } catch (error) {
+        return []
+    }
+
+}
+const AdsList = async () => {
+    const ads = await getAds()
+
     return (
         <div className='container ads-list'>
-            {ads.map((adsInfo, index) => {
-                return <a href={adsInfo.link} key={index}>
-                    <Image src={adsInfo.img} height={100} width={100} alt='' />
+            {ads.slice(0, 4).map((adsInfo, index) => {
+                return <a href={adsInfo.targetLink} key={index}>
+                    <Image src={getImageUrl(adsInfo.img)} height={100} width={100} alt='' />
                 </a>
             })}
         </div>
