@@ -1,7 +1,5 @@
 
-import "./style.scss"; 
-import Link from "next/link";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import "./style.scss";  
 import { BACKEND_URL } from "../../../shared/constants/ulrList";
 import NavItem from '@/shared/components/header/Modules/NavItem';
 import SubCategory from '@/shared/components/header/Modules/SubCategory';

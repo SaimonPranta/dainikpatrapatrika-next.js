@@ -60,7 +60,7 @@ const Index = async () => {
             <div className='top-section'>
                 <div className='left'>
                     <p>
-                         সর্বশেষ:
+                        সর্বশেষ:
                     </p>
                 </div>
                 <marquee>
