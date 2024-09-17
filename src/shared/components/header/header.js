@@ -5,7 +5,7 @@ import NavItem from '@/shared/components/header/Modules/NavItem';
 import SubCategory from '@/shared/components/header/Modules/SubCategory';
 import TopHeader from '@/shared/components/header/Modules/TopHeader/Index';
 // import OthersNavigation from '@/shared/components/header/Modules/OthersNavigation/Index';
-import OtherNavItem from '@/shared/components/header/Modules/OtherNavItem/Index';
+import OtherNavItem from '@/shared/components/header/Modules/OtherNavItem/index';
 import OtherNavigation from '@/shared/components/header/Modules/OtherNavigation/index';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
