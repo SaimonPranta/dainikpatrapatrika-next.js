@@ -70,7 +70,7 @@ const Footer = () => {
                         <p>ফোন : +৮৮০১৯২২১৪০৫৯২ </p>
                         <p>বিজ্ঞাপন : +৮৮০১৫১৫২১৬২৭১</p>
                         <p>ই-মেইল: dainikpatrapatrika@gmail.com</p>
-                        <p>ই-মেইল: dainikpatrapatrika24@gmail.com</p>
+                        <p>বিজ্ঞাপন-মেইল: dainikpatrapatrika24@gmail.com</p>
                         <p>ক-১৬১/এ, মধ্যপাড়া, খিলক্ষেত বাজার, ঢাকা- ১২২৯, বাংলাদেশ ।</p>
                      </div>
                     <Image src={logo} alt='' height={100} width={100} />
