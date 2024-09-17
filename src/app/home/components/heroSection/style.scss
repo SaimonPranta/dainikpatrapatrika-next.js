@@ -56,8 +56,8 @@
         display: grid;
         grid-template-columns: 40% 30% auto;
         gap: 10px;
-        max-height: 760px !important;
-        height: 760px;
+        // max-height: 760px !important;
+        // height: 760px;
         border-bottom: 1px solid var(--column-border);
 
         div {
@@ -81,6 +81,7 @@
                     font-weight: 700;
                     font-size: 22px;
                     line-height: 30px;
+                    min-height: 60px;
                 }
 
                 p {
@@ -109,7 +110,7 @@
                 &:nth-child(2),
                 &:nth-child(3) {
                     p {
-                        display: none;
+                        // display: none;
                     }
                 }
             }
@@ -132,6 +133,7 @@
                     font-weight: 700;
                     font-size: 22px;
                     line-height: 30px;
+                    min-height: 60px;
                 }
 
                 div {
@@ -186,7 +188,7 @@
             .navigation-container {
                 display: flex;
                 align-items: center;
-                margin: 10px 0px;
+                margin: 10px 0px 0px 0px;
                 background: transparent;
 
                 button {
@@ -210,10 +212,11 @@
             }
 
             .news-list {
-                height: 100px;
-                max-height: 350px;
+                height: 440px !important;
+                // max-height: 350px;
                 overflow-y: scroll !important;
                 padding-right: 5px;
+                margin-top: 20px;
 
                 .cart {
                     display: flex;

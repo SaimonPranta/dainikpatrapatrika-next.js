@@ -35,23 +35,6 @@
                 }
 
                 .image-container {
-                    position: relative;
-                    .visitor{
-                        position: absolute;
-                        right: 5px;
-                        top: 5px;
-                        background: #FFF;
-                        display: flex;
-                        align-items:center;
-                        justify-content: center;
-                        gap: 2px;
-                        padding: 4px 8px;
-                        border-radius: 4px;
-                        color: #908c8c;
-                        span{
-                            font-size: 14px !important;
-                        }
-                    }
                     img {
                         height: 200px;
                         width: 100%;

@@ -6,6 +6,7 @@ import { BACKEND_URL } from '@/shared/constants/ulrList';
 import { MdOutlineCommentsDisabled } from 'react-icons/md';
 import getImageUrl from '@/shared/functions/getImageUrl';
 import NewsList from '../NewsList/NewsList';
+import textSlicer from '@/shared/functions/textSlicer';
 
 const getHeroNews = async () => {
     try {
@@ -86,17 +87,20 @@ const Index = async () => {
                               {
                                 index === 0 ?   <h2>{newsInfo.title.substring(0, 58)}</h2> :   <h2>{newsInfo.title.substring(0,42)}</h2>
                               }
-                                <p>{newsInfo?.description?.substring(0, 160)}</p>
+                                {
+                                    index === 0 ?
+                                    <p>{newsInfo?.description?.substring(0, 170)}</p> :  <p>{newsInfo?.description?.substring(0, 140)}</p>
+                                     }
                             </Link>
                         })
                     }
                 </div>
                 <div className="middle-section">
-                    {news.length > 0 && news.splice(3, 5).map((newsInfo, index) => {
+                    {news.length > 0 && news.splice(3, 4).map((newsInfo, index) => {
                         return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
                             <h2>{newsInfo.title.substring(0, 78)}</h2>
                             <div className="inner-cart" >
-                                <p>{`${newsInfo.description.substring(0, 64)}...`}</p> 
+                                <p>{`${newsInfo.description.substring(0, 180)}...`}</p> 
                                 <Image height={100} width={100} src={getImageUrl(newsInfo.img)} alt='' />
                             </div>
                         </Link>
@@ -111,7 +115,7 @@ const Index = async () => {
                             jobsNews.splice(0, 1).map((newsInfo, index) => {
                                 return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className='news-cart' >
                                     <Image height={100} width={100} src={getImageUrl(newsInfo.img)} alt='' />
-                                    <h2>{newsInfo.title}</h2>
+                                    <h2>{textSlicer(newsInfo.title, 35)}</h2>
                                 </Link>
                             })
                         }

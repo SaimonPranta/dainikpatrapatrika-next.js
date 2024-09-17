@@ -3,8 +3,9 @@ function convertToBengaliNumerals(number) {
     return number.toString().replace(/\d/g, digit => bengaliDigits[digit]);
 }
 
-const convertedToBanglaDate = (dateString) => {
-    const date = new Date(dateString) || new Date();
+const convertedToBanglaDate = (dateString = new Date()) => {
+    const date = new Date(dateString);
+    console.log("date ==>>", date)
     const options = {
         year: 'numeric',
         month: 'long',

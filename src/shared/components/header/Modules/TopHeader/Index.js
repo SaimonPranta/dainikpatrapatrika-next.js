@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { FaSearch } from "react-icons/fa";
 import logo from "@/assets/images/home/dainikpatropatrika.jpg";
 import getBengaliDate from "@/shared/functions/getBanglaDate";
-
+import { HiUsers } from "react-icons/hi2";
 
 const Index = () => {
     const [search, setSearch] = useState("")
@@ -27,6 +27,9 @@ const Index = () => {
     }
     const handleSearchNavigation = () => {
         router.push(`/news?search=${search}`)
+    }
+    const handleEmployNavigation = () => {
+        router.push(`/employ`)
     }
     const setSearchEnable = () => {
         const searchBtn = document.getElementById("search-btn")
@@ -55,6 +58,11 @@ const Index = () => {
                             </button>
                             <button onClick={handleVideoNavigation}>
                                 Video
+                            </button>
+                        </div>
+                        <div className="search-container" id="search-btn">
+                            <button onClick={handleEmployNavigation}>
+                            <HiUsers />
                             </button>
                         </div>
                         <div className="search-container" id="search-btn">

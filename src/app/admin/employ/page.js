@@ -9,7 +9,6 @@ import getImageUrl from '@/shared/functions/getImageUrl';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { IoSearch } from "react-icons/io5";
-import { MdVisibility } from "react-icons/md";
 
 const Index = () => {
     const [search, setSearch] = useState("")
@@ -27,7 +26,7 @@ const Index = () => {
                 return
             }
             setLoading(true)
-            fetch(`${BACKEND_URL}/admin/news?page=${page}&search=${search}`)
+            fetch(`${BACKEND_URL}/admin/employ?page=${page}&search=${search}`)
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.data) {
@@ -76,7 +75,7 @@ const Index = () => {
     }, []);
 
     const handleDeleteNews = (id) => {
-        fetch(`${BACKEND_URL}/admin/news?id=${id}`, {
+        fetch(`${BACKEND_URL}/admin/employ?id=${id}`, {
             method: "DELETE"
         })
             .then((res) => res.json())
@@ -88,14 +87,14 @@ const Index = () => {
             }).catch((error) => {})
     }
     const handleAddNewsNavigation = () => {
-        router.push("/admin/news/add")
+        router.push("/admin/employ/add")
     }
 
     return (
         <AdminLayouts>
             <div className='admin-news-page'>
                 <div className="add-news-container">
-                    <button onClick={handleAddNewsNavigation}>Add News</button>
+                    <button onClick={handleAddNewsNavigation}>Add Employ</button>
                 </div>
 
                 <div className="search-container" >
@@ -115,19 +114,23 @@ const Index = () => {
                         {
                             news.map((news, index) => {
                                 return <div key={index} className="new-cart">
-                                    <Link href={`/admin/news/edit/${news._id}`} className="image-container"> 
-                                    <div className="visitor"><MdVisibility /> <span>{news.viewCount}</span> </div>
-                                    <Image height={100} width={100} alt=''  src={getImageUrl(news.img)}   />
-                                     </Link>
+                                    <Link href="" className="image-container"> <Image height={100} width={100} alt=''  src={getImageUrl(news.profilePicture)}   /> </Link>
                                     <div>
-
                                         <Link href={`/news/${news._id}`} className="des-container">
-                                            <h6> {textSlicer(news.title, 42, true)}  </h6>
-                                            <p>{textSlicer(news.description, 99, true)}</p>
+                                            <h6> {news.name}  </h6>
+                                            <p>{`Position: ${news.position}`}</p>
+                                            <p>{`ID Number: ${news.idNumber}`}</p>
+                                            <p>{`Father's Name: ${news.fatherName}`}</p>
+                                            <p>{`Mother's Name: ${news.motherName}`}</p>
+                                            <p>{`Email: ${news.email}`}</p>
+                                            <p>{`Date of Birth: ${news.dateOfBirth}`}</p>
+                                            <p>{`Join Date: ${news.joinDate}`}</p>
+                                            <p>{`ID Cart Expire Date: ${news.idCardExpDate}`}</p>
+                                            <p>{`Password: ${news.address}`}</p>
 
                                         </Link>
                                         <div className="action-btn-container" >
-                                            < Link href={`/admin/news/edit/${news._id}`}><button> Edit </button></Link>
+                                            < Link href={`/admin/employ/edit/${news._id}`}><button> Edit </button></Link>
                                             <button onClick={() => handleDeleteNews(news._id)}>Delete</button>
                                         </div>
                                     </div>

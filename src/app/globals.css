@@ -9,6 +9,12 @@
   --default-color: #DF0000;
   --column-border: #ecdfdf:
 }
+@font-face {
+  font-family: 'Siyam Rupali';
+  src: url('/fonts/SiyamRupali.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -28,6 +34,7 @@ body {
   width: 100vw !important;
   max-width: 100vw !important;
   overflow-x: hidden;
+  /* font-family: 'Siyam Rupali', 'Roboto', sans-serif; */
    
 }
 button{
@@ -39,7 +46,9 @@ p, h1, h2, h3, h4, h5, h6, button{
   padding: 0px;
   color: #000000;
 }
-
+p{
+  /* font-family: 'Siyam Rupali'; */
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -54,7 +54,7 @@ const Footer = () => {
             
                 <div className='chief-editor-section'>
                     <div className='editor'>
-                        <h6>প্রকাশক : আই এম আরিফুল্লাহ</h6>
+                        {/* <h6>প্রকাশক : আই এম আরিফুল্লাহ</h6> */}
                         <h6>সম্পাদক : মোঃ আমিমুল এহসান </h6>
                     </div>
                     

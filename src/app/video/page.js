@@ -40,9 +40,9 @@ const Index = async () => {
                 </div>
                 <div className="video-section" >
                     {
-                        [...vidList].map((news, index) => {
+                        vidList.map((news, index) => {
                             return <Link className='news-cart' href={`/video/${news?.snippet?.resourceId?.videoId}`} key={index} >
-                                <Image src={news?.snippet?.thumbnails?.default?.url} alt='' height={100} width={100} />
+                                <Image src={news?.snippet?.thumbnails?.maxres?.url || news?.snippet?.thumbnails?.standard?.url || news?.snippet?.thumbnails?.medium?.url} alt='' height={100} width={100} />
                                 <h2>{textSlicer(`${news?.snippet?.title}`, 105, true)}</h2>
                                 <Image className='paly-icon' src={palyIcons} alt='' height={100} width={100} />
                             </Link>

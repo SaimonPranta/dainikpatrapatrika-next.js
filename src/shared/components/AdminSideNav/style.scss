@@ -4,49 +4,64 @@
     height: 100vh;
     background-color: #e9ebec;
 
-    .title {
-        height: 60px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-bottom: 1px solid #e4e4e4;
-
-        h6 {
-            color: #000;
-            font-size: 24px;
-            font-weight: 600;
-        }
-    }
-
-    .navigation-container {
-        ul {
-            padding: 0px;
-            margin: 0px;
+    .inner-container {
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        height: 100vh;
+        width: 300px;
+        .title {
+            height: 60px;
             width: 100%;
-            li {
-                list-style: none;
-                margin: 0px;
-                padding: 0px;
-                width: 100%;
-                background: blue;
-                display: inline-block;
-                a {
-                    display: inline-block;
-                    text-decoration: none;
-                    padding: 5px 15px;
-                    box-sizing: border-box;
-                    color: #000;
-                    border-bottom: 1px solid #f1ebeb;
-                    background: #e4e4e4;
-                    width: 100%;
-                    max-width: 100%;
-                    &:hover{
-                        background: #d6cccc;
-                    }
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #e4e4e4;
 
+            h6 {
+                color: #000;
+                font-size: 24px;
+                font-weight: 600;
+            }
+        }
+
+        .navigation-container,
+        .logout-container {
+            ul {
+                padding: 0px;
+                margin: 0px;
+                width: 100%;
+
+                li {
+                    list-style: none;
+                    margin: 0px;
+                    padding: 0px;
+                    width: 100%;
+                    background: blue;
+                    display: inline-block;
+
+                    a {
+                        display: inline-block;
+                        text-decoration: none;
+                        padding: 5px 15px;
+                        box-sizing: border-box;
+                        color: #000;
+                        border-bottom: 1px solid #f1ebeb;
+                        background: #e4e4e4;
+                        width: 100%;
+                        max-width: 100%;
+
+                        &:hover {
+                            background: #d6cccc;
+                        }
+
+                    }
                 }
             }
+        }
+
+        .navigation-container {
+            height: calc(100% - 100px);
         }
     }
 }

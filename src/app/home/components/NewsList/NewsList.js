@@ -102,7 +102,7 @@ const NewsList = () => {
                     })
                 }
                 {
-                    loading && new Array(6).fill("").map((item, index) => {
+                    loading && new Array(8).fill("").map((item, index) => {
                         return <div className="skeleton" key={index}>
                             <span className="img" />
                             <div>

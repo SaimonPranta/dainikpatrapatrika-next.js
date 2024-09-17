@@ -7,7 +7,6 @@ const getImageUrl = (img) => {
     } else {
         url = `${BACKEND_URL}/${img}`
     }
-
     return url
 }
 
