@@ -31,6 +31,11 @@ const Index = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.data) {
+                        if(page === 1 && data.data.length < 8){
+                            setPage((state) => {
+                                return state + 1
+                            })
+                        }
                         setCurrentPage(page - 1)
                         setLoading(false)
 

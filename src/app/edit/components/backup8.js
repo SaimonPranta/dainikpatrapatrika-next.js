@@ -241,10 +241,6 @@ const TiptapEditor = () => {
         {/* Underline Button */}
         <button onClick={() => editor.chain().focus().toggleUnderline().run()} className="header-button">Underline</button>
         
-        <button  onClick={() => editor.chain().focus().toggleStrike().run()} className="header-button">
-            Strike
-          </button>
-        
         {/* Font Family Selector */}
         <select value={selectedFont} onChange={handleFontChange} className="font-family-selector">
           {fontFamilies.map((font) => (
@@ -296,17 +292,15 @@ const TiptapEditor = () => {
         <button onClick={addTable} className="add-table-button">Add Table</button>
 
         {/* Image Alignment */}
-        {/* <button onClick={() => alignImage('left')} className="image-align-button">Align Left</button>
+        <button onClick={() => alignImage('left')} className="image-align-button">Align Left</button>
         <button onClick={() => alignImage('center')} className="image-align-button">Align Center</button>
-        <button onClick={() => alignImage('right')} className="image-align-button">Align Right</button> */}
+        <button onClick={() => alignImage('right')} className="image-align-button">Align Right</button>
 
         {/* Text Alignment */}
         <button onClick={() => setTextAlignment('left')} className="header-button">Align Left</button>
         <button onClick={() => setTextAlignment('center')} className="header-button">Align Center</button>
         <button onClick={() => setTextAlignment('right')} className="header-button">Align Right</button>
         <button onClick={() => setTextAlignment('justify')} className="header-button">Justify</button>
-
-      
       </div>
       
       <EditorContent editor={editor} />

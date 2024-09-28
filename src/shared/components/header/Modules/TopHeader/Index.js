@@ -80,9 +80,11 @@ const Index = () => {
                 </div>
             </div>
             <div className="container middle-container">
-                <Link href="/" className="logo-container">
-                    <Image width="100" height="100" src={logo} alt="" />
-                </Link>
+            <h1  className="logo-container">
+                    <Image width="100" height="100" src={logo} alt="" onClick={() => {
+                        router.push("/")
+                    }} />
+                </h1>
                 <div className="menu-btn-container">
                     <button onClick={toggleNavigation} id="navigation-btn" ><TiThMenu /></button>
                 </div>

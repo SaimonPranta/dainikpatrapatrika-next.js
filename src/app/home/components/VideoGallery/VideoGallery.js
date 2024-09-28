@@ -7,7 +7,7 @@ import palyIcons from "../../../../assets/images/home/video-play-icon-11397.png"
 
 const getVideos = async () => {
     try {
-        let response = await (await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=UUewt9x2hSiEn1rhlrBMuz1A&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`, { 'cache': 'no-store' })).json()
+        let response = await (await fetch(`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=5&playlistId=UUw0CEllkYUTZqVkYgEBZw4Q&key=AIzaSyCnjHwqOkXQo1gNW-VR9uTdR4soiC9IAnc`, { 'cache': 'no-store'})).json()
         if (response.items) {
             return response.items
         }

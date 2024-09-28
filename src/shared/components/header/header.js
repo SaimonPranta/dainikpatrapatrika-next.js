@@ -39,7 +39,7 @@ const Index = async () => {
                     </li>
                     {
                         categories?.length > 0 && [...categories].map((routeInfo, index) => {
-                            return <li key={routeInfo._id} className={index > 6 ? "mobile-li" : "" }>
+                            return <li key={routeInfo._id} className={index > 6 ? "mobile-li" : ""}>
                                 <NavItem currentPath={`/topic/${routeInfo.route}`} currentLabel={routeInfo.label} />
                                 {
                                     routeInfo?.subCategories?.length > 0 && <>

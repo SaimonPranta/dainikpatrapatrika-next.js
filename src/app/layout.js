@@ -16,7 +16,19 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="./favicon.ico" sizes="any" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"  />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TWJDNTRE97"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TWJDNTRE97');
+            `,
+          }}
+        />
       </head>
 
       <App>
@@ -25,3 +37,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
