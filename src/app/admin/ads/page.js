@@ -56,18 +56,19 @@ const Index = () => {
         };
 
     }, [page, search])
-    const handleScroll = () => {
-        if (
-            window.innerHeight + document.documentElement.scrollTop >=
-            Number(document.documentElement.offsetHeight - 1)
-        ) {
-            if (currentPage === page - 1) {
-                setPage((state) => state + 1);
-            }
-        }
-    };
+    
 
     useEffect(() => {
+        const handleScroll = () => {
+            if (
+                window.innerHeight + document.documentElement.scrollTop >=
+                Number(document.documentElement.offsetHeight - 1)
+            ) {
+                if (currentPage === page - 1) {
+                    setPage((state) => state + 1);
+                }
+            }
+        };
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
