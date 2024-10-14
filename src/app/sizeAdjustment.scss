@@ -1,0 +1,14 @@
+ 
+body, main {
+    -webkit-text-size-adjust: 100%; /* For Safari */
+    -ms-text-size-adjust: 100%; /* For Internet Explorer */
+    text-size-adjust: 100%; /* For Firefox */
+  }
+  
+  /* Optional: Add to other elements if needed */
+  h1, h2, h3, h4, h5, h6, p {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
