@@ -23,7 +23,7 @@ const Index = () => {
     
 
     useEffect(() => {
-        if (categories.value.length) {
+        if (!categories?.value || categories?.value?.length) {
             return
         }
         fetch(`${BACKEND_URL}/public/categories`)

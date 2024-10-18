@@ -84,13 +84,13 @@ const Index = async () => {
                         news.length > 0 && news.splice(0, 3).map((newsInfo, index) => {
                             return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
                                 <Image src={getImageUrl(newsInfo.img)} height={100} width={100} alt='' />
-                              {
-                                index === 0 ?   <h2>{newsInfo.title.substring(0, 58)}</h2> :   <h2>{newsInfo.title.substring(0,42)}</h2>
-                              }
+                                {
+                                    index === 0 ? <h2>{textSlicer(newsInfo.title, 68)}</h2> : <h2>{ textSlicer(newsInfo.title, 42)}</h2>
+                                }
                                 {
                                     index === 0 ?
-                                    <p>{newsInfo?.description?.substring(0, 170)}</p> :  <p>{newsInfo?.description?.substring(0, 140)}</p>
-                                     }
+                                        <p>{textSlicer(newsInfo?.description, 170)}</p> : <p>{textSlicer(newsInfo?.description, 130)}</p>
+                                }
                             </Link>
                         })
                     }
@@ -98,9 +98,9 @@ const Index = async () => {
                 <div className="middle-section">
                     {news.length > 0 && news.splice(3, 4).map((newsInfo, index) => {
                         return <Link href={`/news/${newsInfo._id}`} key={index * Math.random() * Math.random()} className="cart" >
-                            <h2>{newsInfo.title.substring(0, 78)}</h2>
+                            <h2>{textSlicer(newsInfo.title, 78)}</h2>
                             <div className="inner-cart" >
-                                <p>{`${newsInfo.description.substring(0, 180)}...`}</p> 
+                                <p>{`${textSlicer(newsInfo.description, 180)}...`}</p>
                                 <Image height={100} width={100} src={getImageUrl(newsInfo.img)} alt='' />
                             </div>
                         </Link>

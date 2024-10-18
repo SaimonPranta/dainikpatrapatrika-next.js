@@ -37,6 +37,7 @@
                 box-shadow: -7px 7px 15px 0 rgb(0 0 0 / 12%);
                 box-sizing: border-box;
 
+                // min-height: 350px;
                 &:nth-child(1) {
                     grid-column: 1/4;
                     width: calc(100%);
@@ -110,17 +111,24 @@
                 }
 
                 p {
-                    height: 60px;
+                    // height: 60px;
                     width: 100%;
                     width: max-content;
                     overflow: hidden;
                     // white-space: nowrap;
                     text-overflow: ellipsis;
                     width: 100%;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    /* Multiline ellipsis */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 4;
                 }
 
                 img {
-                    height: 60%;
+                    height: 50%;
                     width: 100%;
 
                 }
@@ -145,6 +153,16 @@
 
                 h2 {
                     font-weight: 500;
+
+                }
+
+                P {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    /* Multiline ellipsis */
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 4;
                 }
 
                 img {
@@ -260,6 +278,7 @@
                         font-size: 17px !important;
 
                     }
+
                     p {
                         font-weight: 300;
                         font-size: 14px !important;
