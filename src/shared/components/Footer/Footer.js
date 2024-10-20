@@ -19,13 +19,13 @@ const socialList = [
     },
     {
         svg: <FaYoutube />,
-        link: "https://www.youtube.com/@dainikpatrapatrika",
+        link: "https://www.youtube.com/@dainikpatrapatrikanews",
         color: "#ff0000"
 
     },
     {
         svg: <FaInstagram />,
-        link: "https://www.youtube.com/@dainikpatrapatrika",
+        link: "https://www.instagram.com/dainikpatrapatrika?igsh=YnBjN29kZGw5cnF2",
         color: "#c038be"
 
     },
@@ -45,7 +45,7 @@ const Footer = () => {
                 <div className='social-container'>
                     {
                         [...socialList].map((socialInfo, index) => {
-                            return <a key={index} href={socialInfo.link} style={{ background: socialInfo.color }}>
+                            return <a key={index} href={socialInfo.link} target='_blank' style={{ background: socialInfo.color }}>
                                 {socialInfo.svg}
                             </a>
                         })
@@ -54,7 +54,6 @@ const Footer = () => {
             
                 <div className='chief-editor-section'>
                     <div className='editor'>
-                        {/* <h6>প্রকাশক : আই এম আরিফুল্লাহ</h6> */}
                         <h6>সম্পাদক : মোঃ আমিমুল এহসান </h6>
                     </div>
                     

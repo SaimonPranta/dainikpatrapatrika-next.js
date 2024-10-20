@@ -126,9 +126,9 @@ const Share = () => {
                             <a href={`https://twitter.com/intent/tweet?url=${link}`}>
                                 <FaTwitter />
                             </a>
-                            <a href="https://www.instagram.com/your_username/" target="_blank">
+                            {/* <a href={`https://www.instagram.com?url=${link}`}>
                                 <FaInstagram />
-                            </a>
+                            </a> */}
                             <a href={`https://wa.me/?text=${encodeURIComponent(`Check out this link: ${link}`)}`}>
                                 <FaWhatsapp />
                             </a>

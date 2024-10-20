@@ -53,9 +53,9 @@ const Index = () => {
                             <a href="/" />
                         </div>
                         <div className="language-btn">
-                            <button>
+                            {/* <button>
                                 English
-                            </button>
+                            </button> */}
                             <button onClick={handleVideoNavigation}>
                                 Video
                             </button>
