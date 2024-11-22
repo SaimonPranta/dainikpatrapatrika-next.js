@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -8,6 +9,7 @@
   --default-color: #DF0000;
   --column-border: #ecdfdf:
 }
+
 @font-face {
   font-family: 'Siyam Rupali';
   src: url('/fonts/SiyamRupali.ttf') format('truetype');
@@ -23,10 +25,13 @@
   }
 }
 
-.container{
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+.container {
   margin: auto;
   width: 80%;
 }
+
 body {
   margin: 0px;
   color: rgb(var(--foreground-rgb));
@@ -36,16 +41,49 @@ body {
   overflow-x: hidden;
   /* font-family: 'Siyam Rupali', 'Roboto', sans-serif; */
 
-  -webkit-text-size-adjust: 100%; /* For Safari */
-    -ms-text-size-adjust: 100%; /* For Internet Explorer */
-    text-size-adjust: 100%; /* For Firefox */
-   
+  -webkit-text-size-adjust: 100%;
+  /* For Safari */
+  -ms-text-size-adjust: 100%;
+  /* For Internet Explorer */
+  text-size-adjust: 100%;
+
+  /* For Firefox */
+  .policy-page {
+    padding: 40px;
+
+    &>p {
+      margin-bottom: 20px;
+      font-family: "Lora", serif;
+    }
+
+    p {
+      line-height: 25px;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      li {
+        &::marker {
+          color: #000;
+          font-size: 20px;
+        }
+      }
+    }
+
+  }
 }
-button{
+
+button {
   border: none;
   outline: none;
 }
-p, h1, h2, h3, h4, h5, h6, button{
+
+p, h1, h2, h3, h4, h5, h6, button {
   margin: 0px;
   padding: 0px;
   color: #000000;
@@ -54,9 +92,11 @@ p, h1, h2, h3, h4, h5, h6, button{
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-p{
+
+p {
   /* font-family: 'Siyam Rupali'; */
 }
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -65,9 +105,8 @@ p{
 
 
 @media only screen and (min-width:200px) and (max-width:1500px) {
-  .container{
+  .container {
     margin: auto;
-    width: calc(100% - 20px); 
+    width: calc(100% - 20px);
   }
 }
- 

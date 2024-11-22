@@ -59,6 +59,11 @@ const Footer = () => {
                     
                     <div className="links">
                         <Link href={"/"} >Home</Link>
+                        <Link href={"/about"} >About</Link>
+                        <Link href={"/contact"} >Contact</Link>
+                        <Link href={"/terms"} >Terms</Link>
+                        <Link href={"/privacy-policy"} >Privacy Policy</Link>
+                        <Link href={"/advertisement"} >Advertisement</Link>
                     </div>
                     <div className='copy-right'>
                         <p>© ২০২৪ <strong>দৈনিক পত্র পত্রিকা </strong>  | সর্বস্বত্ব স্বত্বাধিকার সংরক্ষিত</p>

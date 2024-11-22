@@ -52,12 +52,13 @@
                 .links {
                     display: flex;
                     gap: 10px;
-                    padding: 10px 0px 15px 0px;
-                    border-bottom: 1px solid #000;
 
                     a {
                         color: #000;
                         text-decoration: none;
+                        border-bottom: 1px solid #000;
+                        padding: 2px;
+
                     }
                 }
 
@@ -90,7 +91,7 @@
     }
 }
 
-@media only screen and (min-width:200px) and (max-width:850px) {
+@media only screen and (min-width:200px) and (max-width:950px) {
 
     .footer-section {
         background-color: #f1f1f1;
@@ -125,20 +126,21 @@
                     .editor {
                         font-size: 22px;
                         font-weight: 300 !important;
-                        p{
+
+                        p {
                             font-size: 14px !important;
-                             font-weight: 300 !important;
+                            font-weight: 300 !important;
                         }
                     }
+
                     .contacts {
-                         text-align: center;
+                        text-align: center;
                     }
 
                     .links {
                         display: flex;
                         gap: 10px;
                         padding: 10px 0px 15px 0px;
-                        border-bottom: 1px solid #000;
 
                         a {
                             color: #000;
